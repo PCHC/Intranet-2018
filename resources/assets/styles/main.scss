@@ -11,6 +11,9 @@
  */
 // @import "~some-node-module";
 
+/** Import theme mixins */
+@import "common/mixins";
+
 /** Import theme styles */
 @import "common/global";
 @import "components/buttons";
