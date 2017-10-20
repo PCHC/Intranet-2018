@@ -20,7 +20,8 @@
   "browserslist": [
     "last 2 versions",
     "android 4",
-    "opera 12"
+    "opera 12",
+    "IE 10"
   ],
   "eslintConfig": {
     "root": true,
