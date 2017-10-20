@@ -1,0 +1,43 @@
+article {
+  margin-bottom: 2rem;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  time {
+    font-size: 0.8rem;
+    color: $gray-600;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    a {
+      color: $gray-900;
+    }
+  }
+}
+
+h5.category-link {
+  font-size: 0.7rem;
+  display: inline-block;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+
+  a {
+    display: inline-block;
+    padding: 0.5em;
+    background: $blue;
+    border-radius: 0.25rem;
+    color: #fff;
+    transition: all 0.2s $transition-easing;
+
+    &:hover {
+      text-decoration: none;
+      background: darken($blue, 8%);
+    }
+  }
+}
