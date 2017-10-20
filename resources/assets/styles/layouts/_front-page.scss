@@ -1,0 +1,187 @@
+.home {
+  .featured {
+    background: $gray-200;
+    padding: 2rem 0;
+
+    &--container {
+      // For browsers that support CSS Grids
+      @supports (display: grid) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3fr 2fr;
+        grid-gap: 1px 1px;
+        grid-template-areas:
+          "featured1 featured1"
+          "featured2 featured3";
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: 2fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          grid-template-areas:
+            "featured1 featured2"
+            "featured1 featured3";
+        }
+
+        article {
+          &:first-child {
+            grid-column: 1 / span 2;
+            grid-row: 1;
+
+            @include media-breakpoint-up(lg) {
+              grid-column: 1;
+              grid-row: 1 / span 2;
+            }
+          }
+        }
+      } // @supports display: grid
+
+      article {
+        position: relative;
+        display: block;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+
+        &::before {
+          display: block;
+          content: "";
+          padding-top: 52.5%;
+        }
+
+        .featured {
+          &--background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../images/news-placeholder_1.jpg');
+            background-size: cover;
+            background-position: center;
+          }
+
+          &--all-over-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 4;
+          }
+
+          &--overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+
+            &::after {
+              display: block;
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              z-index: 1;
+              transition: all 0.2s $transition-easing;
+              opacity: 0.65;
+            }
+          }
+
+          &--wrap {
+            &:hover {
+              .featured--overlay {
+                &::after {
+                  opacity: 0.9;
+                }
+
+                .featured--content {
+                  padding-bottom: 1.5rem;
+                }
+              }
+            }
+          }
+
+          &--content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            padding: 3rem 1rem 1rem;
+            color: #fff;
+            transition: padding 0.2s $transition-easing;
+
+            @include scrim();
+
+            h2 {
+              font-size: 1.3rem;
+              letter-spacing: 0.02em;
+              font-weight: bold;
+            }
+
+            time {
+              font-size: 0.9rem;
+              color: inherit;
+            }
+          }
+
+          &--categories {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 6;
+            padding: 1rem;
+
+            .btn {
+              font-size: 0.8rem;
+            }
+          }
+        } // .featured
+
+        &:first-child {
+          .featured {
+            &--content {
+              h2 {
+                font-size: 1.75rem;
+              }
+            }
+          }
+        } // .article:first-child
+      } // .article
+    } // .featured--container
+  } // .featured
+} // .home
+
+.frontpage-posts--tertiary {
+  article {
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    .entry-summary {
+      display: none;
+    }
+  }
+}
+
+// Random featured overlay colors
+$randcolor: 1;
+
+@each $color1, $bgcolor1 in $colors {
+  @each $color2, $bgcolor2 in $colors {
+    .featured-overlay--#{$randcolor} {
+      @if ($color1 != $color2) {
+        &::after {
+          // Set background as linear gradient with random angle 0–90
+          background: linear-gradient((random(90) + 0deg), $bgcolor1, $bgcolor2);
+        }
+
+        $randcolor: $randcolor + 1;
+      }
+    }
+  }
+}
