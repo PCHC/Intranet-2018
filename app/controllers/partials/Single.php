@@ -8,10 +8,10 @@ trait SinglePartial
       return get_the_post_thumbnail_url();
     }
 
-    return asset_path('images/news-placeholder_'.rand(1,2).'.jpg');
+    return asset_path('images/news-placeholder_'.rand(1,8).'.jpg');
   }
 
   public static function getRandomStyle() {
-    
+
   }
 }
