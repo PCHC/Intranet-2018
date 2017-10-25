@@ -7,7 +7,7 @@
 }
 
 .banner {
-  position: relative;
+  background: #fff;
   z-index: 10;
 
   @include shadow-4dp();
@@ -18,21 +18,92 @@
 }
 
 .brand {
-  display: inline-block;
-  padding: 0.5rem 0;
+  //display: inline-block;
+  //padding: 0.5rem 0;
 
   img {
-    max-height: 5rem;
+    max-height: 3rem;
     width: auto;
   }
 }
 
-.nav-secondary {
-  font-size: 0.9rem;
+.nav-primary {
+  a {
+    color: $gray-700;
 
-  .nav {
-    a {
-      color: $gray-600;
+    &:hover {
+      color: $blue;
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+      .banner & {
+        padding: 0.5rem;
+        font-size: 0.95em;
+      }
+    }
+  }
+
+  .menu-item-has-children {
+    .sub-menu {
+      right: 0;
+      margin: 0;
+      margin-left: 1rem;
+      padding: 0;
+      list-style-type: none;
+      font-size: 0.9em;
+      line-height: 1.1;
+    }
+
+    @include media-breakpoint-up(lg) {
+      position: relative;
+      z-index: 20;
+
+      .sub-menu {
+        display: none;
+        opacity: 0;
+        background: #fff;
+        position: absolute;
+        margin-left: 0;
+        min-width: 125%;
+        top: 90%;
+        transition: all 0.5s $transition-easing;
+        white-space: nowrap;
+
+        @include shadow-8dp();
+      }
+
+      &:hover {
+        > .sub-menu {
+          display: block;
+          opacity: 1;
+        }
+      }
+
+      > a {
+        &::after {
+          // downward angle using FontAwesome icon
+          content: "\F107";
+          display: inline-block;
+          margin-left: 0.25em;
+          font: normal normal normal 14px/1 FontAwesome;
+          font-size: inherit;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      }
+    } // lg&up breakpoint
+  }
+}
+
+.nav-secondary {
+  font-size: 0.8rem;
+
+  a {
+    color: $gray-600;
+
+    &:hover {
+      color: $gray-800;
     }
   }
 }
