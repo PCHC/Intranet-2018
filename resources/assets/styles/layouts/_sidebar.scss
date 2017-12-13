@@ -2,3 +2,26 @@
   padding: 1rem;
   background: $gray-200;
 }
+
+.tribe-events-list-widget {
+  .tribe-list-widget,
+  .tribe-events-list-widget-events {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .tribe-event-duration {
+    font-size: 0.9rem;
+  }
+
+  .tribe-events-list-widget-events {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $gray-400;
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+}
