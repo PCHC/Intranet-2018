@@ -51,6 +51,12 @@ add_action('after_setup_theme', function () {
     add_theme_support('post-thumbnails');
 
     /**
+     * Add thumbnail sizes
+     * @link https://developer.wordpress.org/reference/functions/add_image_size/
+     */
+    add_image_size( 'og-image', 1200, 630 );
+
+    /**
      * Enable HTML5 markup support
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
