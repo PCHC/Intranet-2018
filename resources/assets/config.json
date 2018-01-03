@@ -9,7 +9,7 @@
     ]
   },
   "publicPath": "/app/themes/intranet2017",
-  "devUrl": "http://intranet.dev",
+  "devUrl": "http://intranet.test",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
