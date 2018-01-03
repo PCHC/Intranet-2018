@@ -79,6 +79,7 @@ add_filter('sage/display_sidebar', function ($display) {
     is_front_page(),
     is_single(),
     is_archive(),
+    is_page(),
   ]);
   return $display;
 });
