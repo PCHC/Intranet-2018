@@ -49,7 +49,41 @@ function customized_tribe_single_event_links()	{
 		return;
 	}
 
-	echo '<div class="tribe-events-cal-links">';
-	echo '<a class="tribe-events-ical tribe-events-button" href="' . tribe_get_single_ical_link() . '">+ Export to Calendar </a>';
-	echo '</div>';
+  $link_classes = 'btn btn-sm btn-secondary';
+  $text  = '<i class="fa fa-calendar-plus-o"></i> Export Event';
+	$title = esc_html__( 'Use this to share calendar data with Google Calendar, Apple iCal and other compatible apps', 'the-events-calendar' );
+
+  printf(
+			'<a class="%1$s" title="%2$s" href="%3$s">%4$s</a>',
+      $link_classes,
+			$title,
+			esc_url( tribe_get_single_ical_link() ),
+			$text
+		);
+}
+
+/**
+* Changes the text labels for Google Calendar and iCal buttons on an event list page
+*/
+remove_action( 'tribe_events_after_footer', array( tribe( 'tec.iCal' ), 'maybe_add_link' ) );
+
+add_action( 'tribe_events_after_footer', __NAMESPACE__ . '\\customized_tribe_list_event_links' );
+
+function customized_tribe_list_event_links()	{
+
+	if ( is_single() && post_password_required() ) {
+		return;
+	}
+
+  $link_classes = 'btn btn-sm btn-secondary pull-right';
+  $text  = '<i class="fa fa-calendar-plus-o"></i> Export Events';
+	$title = esc_html__( 'Use this to share calendar data with Google Calendar, Apple iCal and other compatible apps', 'the-events-calendar' );
+
+  printf(
+			'<a class="%1$s" title="%2$s" href="%3$s">%4$s</a>',
+      $link_classes,
+			$title,
+			esc_url( tribe_get_ical_link() ),
+			$text
+		);
 }
