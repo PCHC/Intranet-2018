@@ -6,9 +6,14 @@ article {
     height: auto;
   }
 
-  time {
+  .entry-meta {
     font-size: 0.8rem;
     color: $gray-600;
+    margin-bottom: 0.5em;
+  }
+
+  .entry-categories {
+    margin-bottom: ($spacer / 2);
   }
 
   h2 {
