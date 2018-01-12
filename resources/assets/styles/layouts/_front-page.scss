@@ -185,3 +185,50 @@ $randcolor: 1;
     }
   }
 }
+
+.announcements {
+  &-current {
+    display: grid;
+    grid-template-columns: 4fr 4fr 5fr;
+    grid-template-rows: auto 1fr;
+    grid-gap: $spacer * 2;
+
+    > article {
+      margin: 0;
+
+      h2 {
+        @extend .h3;
+      }
+
+      &:first-child {
+        grid-row: 1;
+        grid-column: span 2;
+
+        h2 {
+          @extend .h1;
+        }
+      }
+    }
+
+    &--secondary {
+      grid-row: 1 / span 2;
+
+      > article {
+        .featured-image {
+          max-width: 30%;
+          float: left;
+          margin-right: $spacer * 0.5;
+          margin-bottom: $spacer;
+        }
+
+        h2 {
+          @extend .h6;
+        }
+
+        .entry-summary {
+          display: none;
+        }
+      }
+    }
+  }
+}

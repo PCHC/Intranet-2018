@@ -1,51 +1,33 @@
 @extends('layouts.app')
 
-@section('featured')
-  @php($no_dup = array())
-  @php(query_posts( array('showposts' => 3) ))
+@section('announcements')
+
+  @php( query_posts( array(
+    'category_name' => 'announcements',
+    'showposts' => 10,
+  ) ) )
+
   @if (have_posts())
-    <div class="featured">
-      <div class="featured--container container">
-        @while (have_posts()) @php(the_post())
-          @include('partials.content-featured-'.get_post_type())
-          @php($no_dup[] = get_the_ID())
-        @endwhile
+    @php( $c = 1 )
+    <div class="announcements">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 announcements-current">
+            @while (have_posts()) @php(the_post())
+              @if( $c == 4 )
+                <div class="announcements-current--secondary">
+              @endif
+              @include('partials.content-announcement-'.get_post_type())
+              @php( $c++ )
+            @endwhile
+            </div>
+          </div>
+          <div class="col-md-2 announcements-past"></div>
+        </div>
       </div>
     </div>
   @endif
 @endsection
 
 @section('content')
-  @include('partials.page-header')
-
-  @if (!have_posts())
-    <div class="alert alert-warning">
-      {{ __('Sorry, no results were found.', 'sage') }}
-    </div>
-    {!! get_search_form(false) !!}
-  @endif
-
-  @php(query_posts(array('showposts' => 3, 'post__not_in' => $no_dup)))
-  @if (have_posts())
-    <div class="frontpage-posts frontpage-posts--secondary">
-      @while (have_posts()) @php(the_post())
-        @include('partials.content-'.get_post_type())
-        @php($no_dup[] = get_the_ID())
-      @endwhile
-    </div>
-  @endif
-
-  @php(query_posts(array('showposts' => 6, 'post__not_in' => $no_dup)))
-  @if (have_posts())
-    <div class="frontpage-posts frontpage-posts--tertiary row">
-      @while (have_posts()) @php(the_post())
-        <div class="col-6">
-          @include('partials.content-'.get_post_type())
-          @php($no_dup[] = get_the_ID())
-        </div>
-      @endwhile
-    </div>
-  @endif
-
-  {!! get_the_posts_navigation() !!}
 @endsection

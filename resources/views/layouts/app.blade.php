@@ -5,7 +5,7 @@
     @php(do_action('get_header'))
     @include('partials.header')
     <div class="document-wrap" role="document">
-      @yield('featured')
+      @yield('announcements')
       <div class="container container--main">
         <div class="content row">
           <main class="main col">
