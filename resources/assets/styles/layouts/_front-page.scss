@@ -117,7 +117,7 @@
 
             @include scrim();
 
-            h2 {
+            .entry-title {
               font-size: 1.3rem;
               letter-spacing: 0.02em;
               font-weight: bold;
@@ -145,7 +145,7 @@
         &:first-child {
           .featured {
             &--content {
-              h2 {
+              .entry-title {
                 font-size: 1.75rem;
               }
             }
@@ -158,7 +158,7 @@
 
 .frontpage-posts--tertiary {
   article {
-    h2 {
+    .entry-title {
       font-size: 1.1rem;
     }
 
@@ -187,6 +187,11 @@ $randcolor: 1;
 }
 
 .announcements {
+  $background-color: $gray-100;
+
+  background: $background-color;
+  padding: ($spacer*2) 0;
+
   &-current {
     display: grid;
     grid-template-columns: 4fr 4fr 5fr;
@@ -196,7 +201,7 @@ $randcolor: 1;
     > article {
       margin: 0;
 
-      h2 {
+      .entry-title {
         @extend .h3;
       }
 
@@ -204,7 +209,7 @@ $randcolor: 1;
         grid-row: 1;
         grid-column: span 2;
 
-        h2 {
+        .entry-title {
           @extend .h1;
         }
       }
@@ -221,7 +226,7 @@ $randcolor: 1;
           margin-bottom: $spacer;
         }
 
-        h2 {
+        .entry-title {
           @extend .h6;
         }
 
@@ -230,5 +235,18 @@ $randcolor: 1;
         }
       }
     }
-  }
+  } //.announcements-current
+
+  &-past {
+    > article {
+      .featured-image,
+      .entry-summary {
+        display: none;
+      }
+
+      .entry-title {
+        @extend .h6;
+      }
+    }
+  } //.announcents-past
 }
