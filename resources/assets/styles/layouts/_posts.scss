@@ -9,20 +9,11 @@ article {
   .entry-meta {
     font-size: 0.8rem;
     color: $gray-600;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
   }
 
   .entry-categories {
     margin-bottom: ($spacer / 2);
-  }
-
-  h2 {
-    font-weight: bold;
-    font-size: 1.5rem;
-
-    a {
-      color: $gray-900;
-    }
   }
 }
 
