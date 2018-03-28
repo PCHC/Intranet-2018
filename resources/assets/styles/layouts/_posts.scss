@@ -9,6 +9,8 @@
   }
 
   &--image {
+    @extend .order-last;
+
     margin-bottom: 1rem;
   }
 
@@ -29,6 +31,7 @@
 
   &--categories {
     font-size: 0.8rem;
+    margin-bottom: 0.5em;
 
     a {
       display: inline-block;

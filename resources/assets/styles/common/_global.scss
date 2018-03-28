@@ -34,6 +34,29 @@
       font-size: 0.9rem;
       line-height: 1;
       display: inline-block;
+
+      #{$self}__red & {
+        color: $red;
+      }
     }
+  }
+}
+
+.nav-links {
+  @include make-row();
+
+  > div {
+    @include make-col-ready();
+    @include make-col(6);
+  }
+
+  a {
+    @extend .btn;
+    @extend .btn-sm;
+    @extend .btn-secondary;
+  }
+
+  .nav-next {
+    @extend .text-right;
   }
 }

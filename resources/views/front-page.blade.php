@@ -42,7 +42,7 @@
 @section('content')
   <div class="row">
     <div class="col section--leadership postcolumn">
-      <div class="section-title row no-gutters">
+      <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">Leadership Reports</h4>
         <div class="section-title--more col-2 text-right">
           <a href="#">More <i class="fa fa-angle-right"></i></a>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="col section--around postcolumn">
-      <div class="section-title row no-gutters">
+      <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">Around the Organization</h4>
         <div class="section-title--more col-2 text-right">
           <a href="#">More <i class="fa fa-angle-right"></i></a>

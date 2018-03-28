@@ -38,7 +38,7 @@ add_filter('excerpt_more', function () {
  * @return length in words
  */
  add_filter('excerpt_length', function() {
-  return 20;
+  return 55;
  });
 
 /**
