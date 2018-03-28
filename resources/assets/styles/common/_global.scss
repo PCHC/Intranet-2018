@@ -2,3 +2,38 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.section-title {
+  $self: &;
+
+  @extend .align-items-center;
+
+  border-left: 0.5rem solid $gray-700;
+  background: rgba($gray-200, 0.75);
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+
+  &__red {
+    border-left-color: $red;
+  }
+
+  &--content {
+    margin-bottom: 0;
+    font-size: 1rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+
+    #{$self}__red & {
+      color: $red;
+    }
+  }
+
+  &--more {
+    > a {
+      font-size: 0.9rem;
+      line-height: 1;
+      display: inline-block;
+    }
+  }
+}
