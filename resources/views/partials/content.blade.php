@@ -20,7 +20,6 @@
       @include('partials.entry-categories')
       <div class="post--summary">
         @php(the_excerpt())
-        <a class="read-more-button btn btn-sm btn-primary post--readmore" href="{{ get_permalink() }}"><i class="fa fa-angle-right"></i> Read More</a>
       </div>
     </div>
   </div>

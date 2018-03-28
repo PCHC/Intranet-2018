@@ -7,14 +7,14 @@
       <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">Latest News</h4>
         <div class="section-title--more col-2 text-right">
-          <a href="#">More news &gt;</a>
+          <a href="#">More news <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
       <div class="row">
         <?php
           query_posts( array(
             'category_name' => 'announcements',
-            'showposts' => 5,
+            'showposts' => 7,
           ) );
           $c = 0;
         ?>
@@ -45,7 +45,7 @@
       <div class="section-title row no-gutters">
         <h4 class="section-title--content col">Leadership Reports</h4>
         <div class="section-title--more col-2 text-right">
-          <a href="#">More &gt;</a>
+          <a href="#">More <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
 
@@ -68,7 +68,7 @@
       <div class="section-title row no-gutters">
         <h4 class="section-title--content col">Around the Organization</h4>
         <div class="section-title--more col-2 text-right">
-          <a href="#">More &gt;</a>
+          <a href="#">More <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
 

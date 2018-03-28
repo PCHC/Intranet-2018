@@ -64,6 +64,10 @@
 .announcements {
   &--hero {
     .post {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+
       &--categories {
         font-size: 1rem;
         background: #fff;
