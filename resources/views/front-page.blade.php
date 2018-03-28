@@ -3,7 +3,7 @@
 @section('announcements')
 
   <div class="announcements">
-    <div class="container">
+    <div class="container-fluid">
       <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">Latest News</h4>
         <div class="section-title--more col-2 text-right">
