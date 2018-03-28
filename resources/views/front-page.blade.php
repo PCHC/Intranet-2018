@@ -21,11 +21,11 @@
         @if( have_posts() )
           @while( have_posts() ) @php(the_post())
             @if($c == 0)
-              <div class="col-8">
+              <div class="col-8 announcements--hero">
                 @include('partials.content-hero')
               </div>{{-- /end hero announcement --}}
               {{-- start other announcements --}}
-              <div class="col-4">
+              <div class="col-4 announcements--more postcolumn">
             @else
               @include('partials.content-'.get_post_type())
             @endif
@@ -41,7 +41,7 @@
 
 @section('content')
   <div class="row">
-    <div class="col section--leadership">
+    <div class="col section--leadership postcolumn">
       <div class="section-title row no-gutters">
         <h4 class="section-title--content col">Leadership Reports</h4>
         <div class="section-title--more col-2 text-right">
@@ -64,7 +64,7 @@
       @php( wp_reset_query() )
     </div>
 
-    <div class="col section--around">
+    <div class="col section--around postcolumn">
       <div class="section-title row no-gutters">
         <h4 class="section-title--content col">Around the Organization</h4>
         <div class="section-title--more col-2 text-right">

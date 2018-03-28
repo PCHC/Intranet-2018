@@ -1,259 +1,78 @@
-.home {
-  .featured {
-    background: $gray-200;
-    padding: 2rem 0;
+.postcolumn {
+  .post {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $gray-400;
 
-    &--container {
-      // For browsers that support CSS Grids
-      @supports (display: grid) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 3fr 2fr;
-        grid-gap: 1px 1px;
-        grid-template-areas:
-          "featured1 featured1"
-          "featured2 featured3";
-
-        @include media-breakpoint-up(lg) {
-          grid-template-columns: 2fr 1fr;
-          grid-template-rows: 1fr 1fr;
-          grid-template-areas:
-            "featured1 featured2"
-            "featured1 featured3";
-        }
-
-        article {
-          &:first-child {
-            grid-column: 1 / span 2;
-            grid-row: 1;
-
-            @include media-breakpoint-up(lg) {
-              grid-column: 1;
-              grid-row: 1 / span 2;
-            }
-          }
-        }
-      } // @supports display: grid
-
-      article {
-        position: relative;
-        display: block;
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-
-        &::before {
-          display: block;
-          content: "";
-          padding-top: 52.5%;
-        }
-
-        .featured {
-          &--background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('../images/news-placeholder_1.jpg');
-            background-size: cover;
-            background-position: center;
-          }
-
-          &--all-over-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 4;
-          }
-
-          &--overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 2;
-
-            &::after {
-              display: block;
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              z-index: 1;
-              transition: all 0.2s $transition-easing;
-              opacity: 0.65;
-            }
-          }
-
-          &--wrap {
-            &:hover {
-              .featured--overlay {
-                &::after {
-                  opacity: 0.9;
-                }
-
-                .featured--content {
-                  padding-bottom: 1.5rem;
-                }
-              }
-            }
-          }
-
-          &--content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 3;
-            padding: 3rem 1rem 1rem;
-            color: #fff;
-            transition: padding 0.2s $transition-easing;
-
-            @include scrim();
-
-            .entry-title {
-              font-size: 1.3rem;
-              letter-spacing: 0.02em;
-              font-weight: bold;
-            }
-
-            time {
-              font-size: 0.9rem;
-              color: inherit;
-            }
-          }
-
-          &--categories {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 6;
-            padding: 1rem;
-
-            .btn {
-              font-size: 0.8rem;
-            }
-          }
-        } // .featured
-
-        &:first-child {
-          .featured {
-            &--content {
-              .entry-title {
-                font-size: 1.75rem;
-              }
-            }
-          }
-        } // .article:first-child
-      } // .article
-    } // .featured--container
-  } // .featured
-} // .home
-
-.frontpage-posts--tertiary {
-  article {
-    .entry-title {
-      font-size: 1.1rem;
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
-    .entry-summary {
+    &--image {
+      margin-bottom: 0;
+
+      @include make-col-ready();
+
+      @include media-breakpoint-up(sm) {
+        @include make-col(5);
+
+        @at-root {
+          .section--leadership,
+          .section--around {
+            .article--image {
+              @include make-col(4);
+            }
+          }
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        @include make-col(4);
+
+        @at-root {
+          .section--leadership,
+          .section--around {
+            .article--image {
+              @include make-col(3);
+            }
+          }
+        }
+      }
+    }
+
+    &--title {
+      @extend .h5;
+    }
+
+    &--content {
+      @extend .d-flex;
+      @extend .flex-column;
+    }
+
+    &--categories {
+      @extend .order-first;
+    }
+
+    &--summary {
       display: none;
     }
   }
 }
 
-// Random featured overlay colors
-$randcolor: 1;
-
-@each $color1, $bgcolor1 in $colors {
-  @each $color2, $bgcolor2 in $colors {
-    .featured-overlay--#{$randcolor} {
-      @if ($color1 != $color2) {
-        &::after {
-          // Set background as linear gradient with random angle 0–90
-          background: linear-gradient((random(90) + 0deg), $bgcolor1, $bgcolor2);
-        }
-
-        $randcolor: $randcolor + 1;
-      }
-    }
-  }
-}
-
 .announcements {
-  $background-color: $gray-100;
-
-  background: $background-color;
-  padding: ($spacer*2) 0;
-
-  .entry-title {
-    a {
-      color: $gray-900;
+  &--hero {
+    .post {
+      &--categories {
+        font-size: 1rem;
+        background: #fff;
+        padding: 0.5em;
+        line-height: 1;
+        display: inline-block;
+        max-width: 25%;
+        transform: translateY(-100%);
+      }
     }
   }
-
-  .featured-image {
-    display: block;
-    margin-bottom: $spacer / 2;
-  }
-
-  &-current {
-    display: grid;
-    grid-template-columns: 4fr 4fr 5fr;
-    grid-template-rows: auto 1fr;
-    grid-gap: $spacer * 2;
-
-    > article {
-      margin: 0;
-
-      .entry-title {
-        @extend .h3;
-      }
-
-      &:first-child {
-        grid-row: 1;
-        grid-column: span 2;
-      }
-    }
-
-    &--secondary {
-      grid-row: 1 / span 2;
-
-      > article {
-        .featured-image {
-          max-width: 30%;
-          float: left;
-          margin-right: $spacer * 0.5;
-          margin-bottom: $spacer;
-        }
-
-        .entry-title {
-          @extend .h6;
-        }
-
-        .entry-summary {
-          display: none;
-        }
-      }
-    }
-  } //.announcements-current
-
-  &-past {
-    > article {
-      .featured-image,
-      .entry-summary {
-        display: none;
-      }
-
-      .entry-title {
-        @extend .h6;
-      }
-    }
-  } //.announcents-past
 }
