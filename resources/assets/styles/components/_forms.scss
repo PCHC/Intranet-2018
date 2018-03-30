@@ -1,19 +1,45 @@
 /** Search form */
-.search-form {
-  @extend .form-inline;
-}
+.search {
+  $this: &;
 
-.search-form label {
-  @extend .form-group;
+  &--form {
+    @extend .form-inline;
 
-  font-weight: normal;
-}
+    font-size: 1.2rem;
+  }
 
-.search-form .search-field {
-  @extend .form-control;
-}
+  &--label {
+    @extend .form-group;
 
-.search-form .search-submit {
-  @extend .btn;
-  @extend .btn-secondary;
+    font-weight: normal;
+  }
+
+  &--field {
+    @extend .form-control;
+
+    border: none;
+    background: $gray-100;
+    color: $gray-600;
+    font-size: inherit;
+    font-weight: 300;
+
+    &:focus {
+      color: $gray-900;
+      background: $gray-100 linear-gradient(90deg, #fff 50%, $gray-100 100%);
+    }
+  }
+
+  &--submit {
+    @extend .btn;
+
+    background: $gray-100;
+    border: none;
+    color: $gray-500;
+    font-size: inherit;
+
+    &:hover {
+      background: $gray-100;
+      color: $primary;
+    }
+  }
 }
