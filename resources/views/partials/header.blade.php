@@ -23,14 +23,7 @@
           <div class="collapse navbar-collapse" id="navbarSecondary">
             {!! wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'nav navbar-nav nav-secondary mr-auto', 'depth' => 1]) !!}
           </div>
-          <form class="form-inline col-12 col-lg-auto" role="search" method="get" action="{{ home_url('/') }}">
-            <div class="input-group col-12 col-lg-auto">
-              <input class="form-control" type="search" name="s" placeholder="Search &hellip;" aria-label="Search" value="{{ sanitize_text_field( get_search_query() ) }}" />
-              <span class="input-group-btn">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
+          @include('partials.search-form')
         </nav>
       </div><!-- end .header-bottom--container -->
     </div><!-- end .header-bottom -->
