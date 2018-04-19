@@ -55,7 +55,7 @@
     &::before {
       display: inline-block;
       margin-right: 0.25em;
-      font: normal normal normal 14px/1 FontAwesome;
+      font: normal normal normal 14px/1 FontAwesome; /* stylelint-disable-line */
       font-size: inherit;
       content: "\F017";
       text-rendering: auto;
