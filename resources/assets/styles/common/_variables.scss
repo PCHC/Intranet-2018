@@ -1,6 +1,5 @@
-//
-// Color system
-//
+/** Import Bootstrap functions */
+@import "~bootstrap/scss/functions";
 
 $white:    #fff;
 $gray-100: #f8f9fa;
@@ -62,3 +61,6 @@ $shadow-ambient-shadow-opacity: 0.12;
 // Transitions
 //
 $transition-easing:     cubic-bezier(0.22, 0.61, 0.36, 1);
+$theme-colors: (
+  primary: #27ae60
+);
