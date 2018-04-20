@@ -67,6 +67,8 @@
 
   &--hero {
     .post {
+      $post: &;
+
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
@@ -77,8 +79,13 @@
         padding: 0.5em;
         line-height: 1;
         display: inline-block;
-        max-width: 25%;
-        transform: translateY(-100%);
+      }
+
+      &.has-post-thumbnail {
+        .post--categories {
+          transform: translateY(-100%);
+          max-width: 25%;
+        }
       }
     }
   }
