@@ -2,18 +2,21 @@
 .search {
   $this: &;
 
+  &-form,
   &--form {
     @extend .form-inline;
 
     font-size: 1.2rem;
   }
 
-  &--label {
+  &--label,
+  &-form label {
     @extend .form-group;
 
     font-weight: normal;
   }
 
+  &-field,
   &--field {
     @extend .form-control;
 
@@ -29,6 +32,7 @@
     }
   }
 
+  &-submit,
   &--submit {
     @extend .btn;
 

@@ -3,7 +3,7 @@
     <div class="container-fluid header-top--container">
       <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
         <a class="brand mr-3" href="{{ home_url('/') }}" title="{{ get_bloginfo('name', 'display') }}">
-          <img src="@asset('images/pchcnow-logo_nobacker@2x.png')" alt="{{ get_bloginfo('name', 'display') }} Logo">
+          <img src="@asset('images/pchctoday-logo.svg')" alt="{{ get_bloginfo('name', 'display') }} Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPrimary,#navbarSecondary" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="togglebutton">
           <span class="fa fa-bars"></span>
