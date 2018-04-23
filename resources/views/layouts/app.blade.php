@@ -9,6 +9,7 @@
       <div class="container-fluid container--main">
         <div class="content row">
           <main class="main col">
+            @include('partials.breadcrumbs')
             @yield('content')
           </main>
           @if (App\display_sidebar())

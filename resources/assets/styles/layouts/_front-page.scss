@@ -81,10 +81,9 @@
         display: inline-block;
       }
 
-      &.has-post-thumbnail {
-        .post--categories {
-          transform: translateY(-100%);
-          max-width: 25%;
+      .featured-image {
+        img {
+          margin-bottom: -2rem;
         }
       }
     }
