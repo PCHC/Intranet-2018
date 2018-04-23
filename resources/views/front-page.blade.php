@@ -5,15 +5,17 @@
   <div class="announcements">
     <div class="container-fluid">
       <div class="section-title section-title__red row no-gutters">
-        <h4 class="section-title--content col">Latest News</h4>
+        <h4 class="section-title--content col">
+          <a href="{!! App::categorySlugLink('news') !!}">Latest News</a>
+        </h4>
         <div class="section-title--more col-2 text-right">
-          <a href="#">More news <i class="fa fa-angle-right"></i></a>
+          <a href="{!! App::categorySlugLink('news') !!}">More News <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
       <div class="row">
         <?php
           query_posts( array(
-            'category_name' => 'announcements',
+            'category_name' => 'news',
             'showposts' => 7,
           ) );
           $c = 0;
@@ -43,9 +45,11 @@
   <div class="row">
     <div class="col section--leadership postcolumn">
       <div class="section-title section-title__red row no-gutters">
-        <h4 class="section-title--content col">Leadership Reports</h4>
+        <h4 class="section-title--content col">
+          <a href="{!! App::categorySlugLink('leadership') !!}">Leadership Reports</a>
+        </h4>
         <div class="section-title--more col-2 text-right">
-          <a href="#">More <i class="fa fa-angle-right"></i></a>
+          <a href="{!! App::categorySlugLink('leadership') !!}">More <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
 
@@ -66,9 +70,11 @@
 
     <div class="col section--around postcolumn">
       <div class="section-title section-title__red row no-gutters">
-        <h4 class="section-title--content col">Around the Organization</h4>
+        <h4 class="section-title--content col">
+          <a href="{!! App::categorySlugLink('around-the-org') !!}">Around the Organization</a>
+        </h4>
         <div class="section-title--more col-2 text-right">
-          <a href="#">More <i class="fa fa-angle-right"></i></a>
+          <a href="{!! App::categorySlugLink('around-the-org') !!}">More <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
 

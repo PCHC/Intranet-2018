@@ -68,3 +68,7 @@
 .search-query {
   font-style: italic;
 }
+
+table {
+  @extend .table;
+}

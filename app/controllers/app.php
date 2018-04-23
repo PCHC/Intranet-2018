@@ -30,4 +30,17 @@ class App extends Controller
         }
         return get_the_title();
     }
+
+    public static function categorySlugLink($catSlug = '')
+    {
+      if ($catSlug === '') {
+        return;
+      }
+
+      $catObj = get_category_by_slug($catSlug);
+      $catId = $catObj->term_id;
+      $catLink = get_category_link($catId);
+
+      return esc_url($catLink);
+    }
 }
