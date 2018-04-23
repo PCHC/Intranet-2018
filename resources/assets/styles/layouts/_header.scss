@@ -78,20 +78,6 @@
           opacity: 1;
         }
       }
-
-      > a {
-        &::after {
-          // downward angle using FontAwesome icon
-          content: "\F107";
-          display: inline-block;
-          margin-left: 0.25em;
-          font: normal normal normal 14px/1 FontAwesome; /* stylelint-disable-line */
-          font-size: inherit;
-          text-rendering: auto;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-      }
     } // lg&up breakpoint
   }
 }
