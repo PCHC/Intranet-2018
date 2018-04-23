@@ -50,7 +50,7 @@ function customized_tribe_single_event_links()	{
 	}
 
   $link_classes = 'btn btn-sm btn-secondary';
-  $text  = '<i class="fa fa-calendar-plus-o"></i> Export Event';
+  $text  = '<i class="fas fa-calendar-plus"></i> Export Event';
 	$title = esc_html__( 'Use this to share calendar data with Google Calendar, Apple iCal and other compatible apps', 'the-events-calendar' );
 
   printf(
@@ -76,7 +76,7 @@ function customized_tribe_list_event_links()	{
 	}
 
   $link_classes = 'btn btn-sm btn-secondary pull-right';
-  $text  = '<i class="fa fa-calendar-plus-o"></i> Export Events';
+  $text  = '<i class="fas fa-calendar-plus"></i> Export Events';
 	$title = esc_html__( 'Use this to share calendar data with Google Calendar, Apple iCal and other compatible apps', 'the-events-calendar' );
 
   printf(

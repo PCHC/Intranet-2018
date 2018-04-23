@@ -98,7 +98,7 @@ if ( $posts ) : ?>
 				<?php do_action( 'tribe_events_list_widget_before_the_meta' ) ?>
 
 				<div class="tribe-event-duration">
-					<i class="fa fa-clock-o"></i> <?php echo tribe_events_event_schedule_details(); ?>
+					<i class="far fa-calendar"></i> <?php echo tribe_events_event_schedule_details(); ?>
 				</div>
 
 				<?php do_action( 'tribe_events_list_widget_after_the_meta' ) ?>
@@ -108,7 +108,7 @@ if ( $posts ) : ?>
 		?>
 	</ol><!-- .tribe-list-widget -->
 
-	<a class="tribe-events-widget-link btn btn-sm btn-primary btn-block" href="<?php echo esc_url( tribe_get_events_link() ); ?>" rel="bookmark"><i class="fa fa-calendar"></i> <?php printf( esc_html__( 'View All %s', 'the-events-calendar' ), $events_label_plural ); ?></a>
+	<a class="tribe-events-widget-link btn btn-sm btn-primary btn-block" href="<?php echo esc_url( tribe_get_events_link() ); ?>" rel="bookmark"><i class="far fa-calendar-alt"></i> <?php printf( esc_html__( 'View All %s', 'the-events-calendar' ), $events_label_plural ); ?></a>
 
 <?php
 // No events were found.

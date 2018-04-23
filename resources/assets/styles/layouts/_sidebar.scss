@@ -1,10 +1,30 @@
 .sidebar {
   padding: 1rem;
   background: $gray-200;
+
+  h3 {
+    @extend .h6;
+
+    border-left: 0.3em solid $gray-500;
+    background: $gray-800;
+    color: $gray-100;
+    padding: 0.5em;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    letter-spacing: 0.05em;
+  }
+
+  h4 {
+    @extend .h5;
+  }
 }
 
 .widget {
   margin-bottom: 2rem;
+
+  &:first-child {
+    margin-top: -1rem;
+  }
 
   &:last-child {
     padding-bottom: 0;
@@ -62,5 +82,25 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+  }
+}
+
+.widget_wpfb_searchwidget {
+  form {
+    //@extend .form-group;
+  }
+
+  label {
+    //@extend .col-8;
+  }
+
+  .search-field {
+    //@extend .form-control;
+  }
+
+  .search-submit {
+    //@extend .btn;
+    //@extend .btn-primary;
+    //@extend .col;
   }
 }
