@@ -64,3 +64,10 @@ $transition-easing:     cubic-bezier(0.22, 0.61, 0.36, 1);
 $breadcrumb-bg:                     $gray-100 !default;
 $breadcrumb-divider-color:          $gray-500 !default;
 $breadcrumb-active-color:           $gray-600 !default;
+
+//
+// FIXME: error in `yarn build:production` due to handling of the following:
+// LINK: https://github.com/roots/sage/issues/2017
+//
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
