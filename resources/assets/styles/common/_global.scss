@@ -88,3 +88,17 @@ table {
     color: $breadcrumb-active-color;
   }
 }
+
+#top-alert {
+  margin: 0;
+
+  p {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h3 {
+    @extend .h5;
+  }
+}

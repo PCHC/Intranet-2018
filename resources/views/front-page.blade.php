@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-8 announcements--primary">
+        <div class="announcements--primary">
           <?php
             $announcements_query = array(
               'category_name' => 'news',
@@ -53,7 +53,7 @@
         query_posts( $announcements_query );
         ?>
         @if( have_posts() )
-          <div class="col-4 announcements--more postcolumn">
+          <div class="announcements--more postcolumn">
               @while( have_posts() ) @php( the_post() )
                 @include('partials.content-'.get_post_type())
               @endwhile()

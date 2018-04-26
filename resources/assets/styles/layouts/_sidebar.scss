@@ -17,19 +17,19 @@
   h4 {
     @extend .h5;
   }
-}
 
-.widget {
-  margin-bottom: 2rem;
+  .widget {
+    margin-bottom: 2rem;
 
-  &:first-child {
-    margin-top: -1rem;
-  }
+    &:first-child {
+      margin-top: -1rem;
+    }
 
-  &:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-    margin-bottom: 0;
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+      margin-bottom: 0;
+    }
   }
 }
 

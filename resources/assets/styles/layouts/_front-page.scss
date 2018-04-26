@@ -72,8 +72,15 @@
 }
 
 .announcements {
+  $primary-col-width: 8;
+
   padding: 1rem 0;
   background: $gray-100;
+
+  &--primary {
+    @include make-col-ready();
+    @include make-col($primary-col-width);
+  }
 
   &--hero {
     padding-bottom: 1rem;
@@ -135,6 +142,9 @@
   }
 
   &--more {
+    @include make-col-ready();
+    @include make-col(12 - $primary-col-width);
+
     border-left: 1px solid $gray-400;
   }
 }
