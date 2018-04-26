@@ -1,14 +1,14 @@
 <article @php(post_class())>
-  <div class="row">
+  <div class="post--wrap">
     @if( has_post_thumbnail() )
-      <div class="col-4 col-sm-3 col-lg-2 post--image">
+      <div class="post--image">
         <a href="{{ get_permalink() }}" class="featured-image">
           {{ the_post_thumbnail('thumbnail') }}
         </a>
       </div>
     @endif
 
-    <div class="col post--content">
+    <div class="post--content">
       <h2 class="post--title">
         <a href="{{ get_permalink() }}">{{ get_the_title() }}</a>
       </h2>

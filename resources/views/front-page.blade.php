@@ -13,28 +13,53 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-8 announcements--primary">
+          <?php
+            $announcements_query = array(
+              'category_name' => 'news',
+              'showposts' => 1,
+              'offset' => 0,
+            );
+
+            query_posts( $announcements_query );
+          ?>
+          @if( have_posts() )
+            <div class="announcements--hero">
+              @while( have_posts() ) @php( the_post() )
+                @include('partials.content-hero')
+              @endwhile()
+            </div>
+          @endif
+
+          <?php
+            $announcements_query['offset'] += $announcements_query['showposts'];
+
+            $announcements_query['showposts'] = 2;
+            query_posts( $announcements_query );
+          ?>
+          @if( have_posts() )
+            <div class="announcements--secondary row">
+              @while( have_posts() ) @php( the_post() )
+                @include('partials.content-'.get_post_type())
+              @endwhile()
+            </div>
+          @endif
+        </div>
+
         <?php
-          query_posts( array(
-            'category_name' => 'news',
-            'showposts' => 7,
-          ) );
-          $c = 0;
+        $announcements_query['offset'] += $announcements_query['showposts'];
+
+        $announcements_query['showposts'] = 6;
+        query_posts( $announcements_query );
         ?>
         @if( have_posts() )
-          @while( have_posts() ) @php(the_post())
-            @if($c == 0)
-              <div class="col-8 announcements--hero">
-                @include('partials.content-hero')
-              </div>{{-- /end hero announcement --}}
-              {{-- start other announcements --}}
-              <div class="col-4 announcements--more postcolumn">
-            @else
-              @include('partials.content-'.get_post_type())
-            @endif
-            @php($c++)
-          @endwhile
-        </div>{{-- end other announcements --}}
+          <div class="col-4 announcements--more postcolumn">
+              @while( have_posts() ) @php( the_post() )
+                @include('partials.content-'.get_post_type())
+              @endwhile()
+          </div>
         @endif
+
       </div>{{-- /.row --}}
     </div>{{-- /.container --}}
   </div>{{-- /.announcements --}}
