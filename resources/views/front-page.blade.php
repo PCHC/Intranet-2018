@@ -49,7 +49,7 @@
         <?php
         $announcements_query['offset'] += $announcements_query['showposts'];
 
-        $announcements_query['showposts'] = 6;
+        $announcements_query['showposts'] = 7;
         query_posts( $announcements_query );
         ?>
         @if( have_posts() )
@@ -57,7 +57,7 @@
               @while( have_posts() ) @php( the_post() )
                 @include('partials.content-'.get_post_type())
               @endwhile()
-              <a class="btn btn-primary btn-block" href="{!! App::categorySlugLink('news') !!}"><i class="fas fa-newspaper"></i> See More</a>
+              <a class="btn btn-primary btn-block" href="{!! App::categorySlugLink('news') !!}page/2/"><i class="fas fa-newspaper"></i> See More</a>
           </div>
         @endif
 
