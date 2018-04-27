@@ -8,7 +8,7 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/app/themes/intranet2018",
+  "publicPath": "/wp-content/themes/intranet2018",
   "devUrl": "http://newintranet.local",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
