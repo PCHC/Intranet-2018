@@ -90,3 +90,10 @@ Container::getInstance()
             'view' => require dirname(__DIR__).'/config/view.php',
         ]);
     }, true);
+
+/**
+ * Require all plugin files in app/plugins/
+ */
+foreach( glob( dirname(__DIR__) . "/app/plugins/**/*.php") as $file ) {
+  require $file;
+}
