@@ -18,6 +18,7 @@
         </time>
       </div>
       @include('partials.entry-categories')
+      @include('partials.recognition-taxonomies')
       <div class="post--summary">
         @php(the_excerpt())
       </div>

@@ -29,7 +29,8 @@
     }
   }
 
-  &--categories {
+  &--categories,
+  &--taxonomy {
     font-size: 0.8rem;
     margin-bottom: 0.5em;
 
@@ -45,6 +46,88 @@
       &:hover {
         color: $gray-800;
         text-decoration: none;
+      }
+    }
+  }
+
+  &--taxonomy {
+    &,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+
+    &.taxonomy {
+      &--recognition-category {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.post-type-archive-employee_recognition,
+.tax-employee_recognition_category,
+.tax-department {
+  .posts {
+    &--wrap {
+      @include make-row();
+    }
+  }
+
+  main {
+    article {
+      @include make-col-ready();
+      @include make-col(3);
+    }
+  }
+
+  .post {
+    &--wrap {
+      text-align: center;
+    }
+
+    &--image {
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    &--title {
+      @extend .h4;
+    }
+
+    &--categories {
+      display: none;
+    }
+  }
+}
+
+.single-employee_recognition {
+  .post {
+    &--taxonomy {
+      li {
+        &:first-child {
+          a {
+            padding-left: 0;
+          }
+        }
+
+        &:last-child {
+          a {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
+    &--image {
+      img {
+        @extend .alignright;
+        @extend .rounded;
       }
     }
   }

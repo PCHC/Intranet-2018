@@ -12,9 +12,13 @@
     </div>
   @endif
 
-  @while(have_posts()) @php(the_post())
-    @include('partials.content')
-  @endwhile
+  @if (have_posts())
+    <div class="posts--wrap">
+      @while(have_posts()) @php(the_post())
+        @include('partials.content')
+      @endwhile
+    </div>
+  @endif
 
   {!! get_the_posts_navigation() !!}
 @endsection

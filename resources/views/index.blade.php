@@ -10,9 +10,13 @@
     {!! get_search_form(false) !!}
   @endif
 
-  @while (have_posts()) @php(the_post())
-    @include('partials.content-'.get_post_type())
-  @endwhile
+  @if (have_posts())
+    <div class="posts--wrap">
+      @while (have_posts()) @php(the_post())
+        @include('partials.content-'.get_post_type())
+      @endwhile
+    </div>
+  @endif
 
   {!! get_the_posts_navigation() !!}
 @endsection
