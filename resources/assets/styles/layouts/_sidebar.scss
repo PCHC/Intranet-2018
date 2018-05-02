@@ -12,6 +12,10 @@
     margin-left: -1rem;
     margin-right: -1rem;
     letter-spacing: 0.05em;
+
+    a {
+      color: inherit;
+    }
   }
 
   h4 {
@@ -102,5 +106,79 @@
     //@extend .btn;
     //@extend .btn-primary;
     //@extend .col;
+  }
+}
+
+// PCHC Employee Recognition widget
+.pchcer {
+  &__post,
+  &__posts, {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__post {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $gray-400;
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    // Clear floats
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  &__image {
+    float: right;
+    max-width: 40%;
+    height: auto;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+  }
+
+  .sidebar &__title {
+    margin-bottom: 0;
+  }
+
+  &__timestamp {
+    font-size: 0.9rem;
+  }
+
+  &__taxonomy,
+  &__taxonomy li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__taxonomy {
+    font-size: 0.8rem;
+    color: $gray-700;
+    font-style: italic;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  &__readmore {
+    font-size: 0.9rem;
+  }
+
+  &__widget-readmore {
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .btn-block;
+
+    margin-top: 0.5rem;
   }
 }
