@@ -69,6 +69,27 @@
   }
 }
 
+.category {
+  .post {
+    &--wrap {
+      @include make-row();
+    }
+
+    &--content {
+      @extend .col;
+    }
+
+    &--image {
+      @include make-col-ready();
+      @include make-col(3);
+
+      @include media-breakpoint-up(lg) {
+        @include make-col(2);
+      }
+    }
+  }
+}
+
 .post-type-archive-employee_recognition,
 .tax-employee_recognition_category,
 .tax-department {

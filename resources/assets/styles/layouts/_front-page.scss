@@ -74,9 +74,6 @@
 .announcements {
   $primary-col-width: 8;
 
-  padding: 1rem 0;
-  background: $gray-100;
-
   &--primary {
     @include make-col-ready();
     @include make-col($primary-col-width);
@@ -95,16 +92,15 @@
       border-bottom: none;
 
       &--categories {
-        font-size: 1rem;
-        background: $gray-100;
-        padding: 0.5em;
+        font-size: 0.9rem;
         line-height: 1;
         display: inline-block;
       }
 
-      .featured-image {
+      &--image {
         img {
-          margin-bottom: -2rem;
+          display: block;
+          margin: 0 auto;
         }
       }
     }
