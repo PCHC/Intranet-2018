@@ -74,6 +74,8 @@
 .announcements {
   $primary-col-width: 8;
 
+  padding: 1rem 0;
+
   &--primary {
     @include make-col-ready();
     @include make-col($primary-col-width);
