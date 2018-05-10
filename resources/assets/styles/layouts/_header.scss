@@ -52,6 +52,14 @@
       list-style-type: none;
       font-size: 0.9em;
       line-height: 1.1;
+
+      a {
+        padding: 0.5rem;
+
+        &:hover {
+          background: $gray-100;
+        }
+      }
     }
 
     @include media-breakpoint-up(lg) {
@@ -60,19 +68,22 @@
 
       .sub-menu {
         display: none;
+        left: 0;
         opacity: 0;
         background: #fff;
         position: absolute;
         margin-left: 0;
-        min-width: 125%;
         top: 90%;
         transition: all 0.5s $transition-easing;
-        white-space: nowrap;
 
         @include shadow-8dp();
       }
 
       &:hover {
+        > a {
+          color: $blue;
+        }
+
         > .sub-menu {
           display: block;
           opacity: 1;
