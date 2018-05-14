@@ -47,3 +47,47 @@
     }
   }
 }
+
+/*
+ * Contact Form 7
+ */
+
+.wpcf7-form {
+  .wpcf7 {
+    &-text,
+    &-textarea,
+    &-select {
+      @extend .form-control;
+    }
+
+    &-list-item {
+      @extend .form-check;
+
+      input {
+        @extend .form-check-input;
+      }
+
+      &-label {
+        @extend .form-check-label;
+      }
+    }
+
+    &-submit {
+      @extend .btn;
+      @extend .btn-primary;
+    }
+
+    &-not-valid {
+      @extend .is-invalid;
+
+      &-tip {
+        @extend .invalid-feedback;
+      }
+    }
+
+    &-validation-errors {
+      @extend .alert;
+      @extend .alert-danger;
+    }
+  }
+}
