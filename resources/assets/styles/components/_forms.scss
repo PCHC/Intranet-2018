@@ -7,6 +7,11 @@
     @extend .form-inline;
 
     font-size: 1.2rem;
+
+    .widget_wpfb_searchwidget & {
+      flex-direction: column;
+      align-items: stretch;
+    }
   }
 
   &--label,
@@ -30,6 +35,15 @@
       color: $gray-900;
       background: $gray-100 linear-gradient(90deg, #fff 50%, $gray-100 100%);
     }
+
+    .widget_wpfb_searchwidget & {
+      display: block;
+      width: 100%;
+
+      &:focus {
+        background: $white;
+      }
+    }
   }
 
   &-submit,
@@ -44,6 +58,10 @@
     &:hover {
       background: $gray-100;
       color: $primary;
+    }
+
+    .widget_wpfb_searchwidget & {
+      @extend .btn-primary;
     }
   }
 }
