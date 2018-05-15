@@ -9,7 +9,7 @@
           <a href="{!! App::categorySlugLink('news') !!}">Latest News</a>
         </h4>
         <div class="section-title--more col-2 text-right">
-          <a href="{!! App::categorySlugLink('news') !!}">More News <i class="fa fa-angle-right"></i></a>
+          <a href="{!! App::categorySlugLink('news') !!}page/2/">More News <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
       <div class="row">
