@@ -1,7 +1,7 @@
 <header class="banner sticky-top">
   <div class="header-top">
     <div class="container-fluid header-top--container">
-      <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+      <nav class="navbar navbar-expand-md navbar-light justify-content-between">
         <a class="brand mr-3" href="{{ home_url('/') }}" title="{{ get_bloginfo('name', 'display') }}">
           <img src="@asset('images/pchctoday-logo.svg')" alt="{{ get_bloginfo('name', 'display') }} Logo">
         </a>
@@ -19,7 +19,7 @@
   @if (has_nav_menu('secondary_navigation'))
     <div class="header-bottom">
       <div class="container-fluid header-bottom--container">
-        <nav class="navbar navbar-expand-lg navbar-light justify-content-around">
+        <nav class="navbar navbar-expand-md navbar-light justify-content-around">
           <div class="collapse navbar-collapse" id="navbarSecondary">
             {!! wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'nav navbar-nav nav-secondary mr-auto', 'depth' => 1]) !!}
           </div>
