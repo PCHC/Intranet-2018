@@ -1,0 +1,44 @@
+.page-children {
+  @include make-col-ready();
+  @include make-col(4);
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(3);
+  }
+
+  @include media-breakpoint-up(md) {
+    @include make-col(2);
+  }
+
+  @extend .order-first;
+
+  &--nav {
+    @extend .nav;
+    @extend .flex-column;
+    @extend .nav-pills;
+
+    font-size: 0.9rem;
+
+    li {
+      @extend .nav-item;
+
+      a {
+        @extend .nav-link;
+
+        &:hover {
+          background: $gray-200;
+        }
+      }
+
+      &:first-child {
+        a {
+          @extend .active;
+
+          &:hover {
+            @extend .active;
+          }
+        }
+      }
+    }
+  }
+}
