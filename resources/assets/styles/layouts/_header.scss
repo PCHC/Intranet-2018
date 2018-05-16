@@ -62,7 +62,7 @@
       }
     }
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
       position: relative;
       z-index: 20;
 
