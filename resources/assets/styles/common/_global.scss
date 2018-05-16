@@ -1,3 +1,11 @@
+.container {
+  &--main,
+  &--announcements,
+  &--footer {
+    max-width: 1140px;
+  }
+}
+
 .document-wrap {
   min-height: 75vh;
 }
