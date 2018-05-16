@@ -7,7 +7,7 @@
     @include('partials.header')
     <div class="document-wrap" role="document">
       @yield('announcements')
-      <div class="container-fluid container--main">
+      <div class="container container--main">
         <div class="content row">
           <main class="main col">
             @include('partials.breadcrumbs')

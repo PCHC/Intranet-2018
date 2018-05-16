@@ -3,7 +3,7 @@
 @section('announcements')
 
   <div class="announcements">
-    <div class="container-fluid">
+    <div class="container">
       <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">
           <a href="{!! App::categorySlugLink('news') !!}">Latest News</a>
