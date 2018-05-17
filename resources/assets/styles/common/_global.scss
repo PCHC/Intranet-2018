@@ -15,6 +15,21 @@
   margin-bottom: 2rem;
 }
 
+.page,
+.single {
+  main {
+    h1 {
+      font-weight: 400;
+    }
+
+    h2,
+    h3,
+    h4 {
+      font-weight: 300;
+    }
+  }
+}
+
 .section-title {
   $self: &;
 
