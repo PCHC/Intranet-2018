@@ -13,25 +13,25 @@
 
 .aligncenter {
   display: block;
-  margin: ($spacer / 2) auto;
+  margin: $spacer auto;
   height: auto;
 }
 
 .alignleft,
 .alignright {
-  margin-bottom: ($spacer / 2);
+  margin-bottom: $spacer;
   height: auto;
 }
 
 @include media-breakpoint-up(sm) {
   .alignleft {
     float: left;
-    margin-right: ($spacer / 2);
+    margin-right: ($spacer * 1.5);
   }
 
   .alignright {
     float: right;
-    margin-left: ($spacer / 2);
+    margin-left: ($spacer * 1.5);
   }
 }
 
@@ -53,4 +53,93 @@
 .screen-reader-text {
   @extend .sr-only;
   @extend .sr-only-focusable;
+}
+
+/** Gutenberg Styles */
+p.wp-block-subhead {
+  font-size: 1.1em;
+  font-style: italic;
+  opacity: 0.75;
+  font-family: $font-family-serif;
+}
+
+.wp-block-separator {
+  clear: both;
+  border: none;
+  border-bottom: 2px solid $gray-500;
+  min-width: 6rem;
+  max-width: 15%;
+  margin: $spacer auto;
+
+  + h2,
+  + h3,
+  + h4,
+  + h5,
+  + h6 {
+    text-align: center;
+  }
+}
+
+.wp-block-quote {
+  @extend .blockquote;
+
+  font-size: 1.1rem;
+  margin: ($spacer * 1.5);
+  padding-left: ($spacer * 1.5);
+  border-left: ($spacer / 2) solid $gray-300;
+
+  cite {
+    display: block;
+    font-size: 0.9em;
+    color: $gray-600;
+    font-style: italic;
+
+    &::before {
+      content: "\2014 \00A0";
+    }
+  }
+}
+
+.wp-block-text-columns {
+  display: flex;
+
+  &.aligncenter {
+    display: flex;
+  }
+
+  .wp-block-column {
+    margin: 0 $spacer;
+    padding: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    &.columns-#{$i} {
+      .wp-block-column {
+        width: (100% / $i);
+      }
+    }
+  }
+}
+
+.wp-block-columns {
+  display: grid;
+  grid-auto-flow: dense;
+
+  @for $i from 1 through 6 {
+    &.has-#{$i}-columns {
+      grid-auto-columns: (100% / $i);
+    }
+
+    .layout-column-#{$i} {
+      grid-column: $i;
+    }
+  }
 }
