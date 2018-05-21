@@ -15,26 +15,21 @@
   margin-bottom: 2rem;
 }
 
-.page,
-.single {
-  main {
-    h1 {
-      font-weight: 400;
-      font-size: $font-size-base * 2.75;
-    }
-
-    h2,
-    h3,
-    h4 {
-      font-weight: 700;
-      margin-bottom: 1em;
-      padding-top: 1em * 0.25;
-      font-family: $font-family-serif;
-    }
-  }
-}
-
 article {
+  h1 {
+    font-weight: 400;
+    font-size: $font-size-base * 2.75;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    margin-bottom: 1em;
+    padding-top: 1em * 0.25;
+    font-family: $font-family-serif;
+  }
+
   img {
     max-width: 100%;
     height: auto;
