@@ -143,3 +143,9 @@ p.wp-block-subhead {
     }
   }
 }
+
+.wp-block-table {
+  @extend .table;
+
+  display: table;
+}
