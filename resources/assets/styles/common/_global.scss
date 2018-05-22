@@ -16,11 +16,6 @@
 }
 
 article {
-  h1 {
-    font-weight: 400;
-    font-size: $font-size-base * 2.75;
-  }
-
   h2,
   h3,
   h4 {
@@ -33,6 +28,14 @@ article {
   img {
     max-width: 100%;
     height: auto;
+  }
+}
+
+article,
+.page-header {
+  h1 {
+    font-weight: 400;
+    font-size: $font-size-base * 2.75;
   }
 }
 
@@ -131,5 +134,13 @@ table {
 
   h3 {
     @extend .h5;
+  }
+}
+
+.card-body {
+  p {
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

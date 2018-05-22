@@ -29,14 +29,30 @@
           background: $gray-200;
         }
       }
+    }
 
-      &:first-child {
+    &__parent {
+      li {
         a {
-          @extend .active;
+          background: $blue;
+          color: $white;
+          padding: 0.5rem;
 
           &:hover {
-            @extend .active;
+            background: $link-hover-color;
+            color: $white;
           }
+        }
+      }
+    }
+
+    &__children {
+      .current_page_item {
+        a,
+        a:hover {
+          color: $gray-800;
+          background: $gray-100;
+          cursor: auto;
         }
       }
     }

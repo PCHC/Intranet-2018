@@ -21,6 +21,8 @@
 
   h4 {
     @extend .h5;
+
+    font-family: $font-family-sans-serif;
   }
 
   .widget {
