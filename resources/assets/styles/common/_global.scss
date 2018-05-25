@@ -151,35 +151,23 @@ table {
     p,
     li {
       .link-effect {
+        $linkColor: lighten($blue, 30%);
+
+        background: transparent;
         color: inherit;
-        position: relative;
-        white-space: nowrap;
-        transition: all 0.15s ease-out;
-
-        > span {
-          position: relative;
-          z-index: 3;
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          left: -1px;
-          right: -1px;
-          bottom: 0;
-          height: 3px;
-          background: lighten($blue, 30%);
-          transition: all 0.2s ease-out;
-        }
+        text-decoration: none;
+        transition: all 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+        border-bottom: 0 solid $linkColor;
+        box-shadow: inset 0 -4px $linkColor;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        word-wrap: break-word;
 
         &:hover {
-          text-decoration: none;
-          color: $white;
+          $linkHoverColor: lighten($blue, 50%);
 
-          &::before {
-            height: 100%;
-            background: $blue;
-          }
+          background-color: $linkHoverColor;
+          box-shadow: inset 0 -4px $linkHoverColor;
         }
       }
     }
