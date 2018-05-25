@@ -144,3 +144,44 @@ table {
     }
   }
 }
+
+.page,
+.single {
+  main {
+    p,
+    li {
+      .link-effect {
+        color: inherit;
+        position: relative;
+        white-space: nowrap;
+        transition: all 0.15s ease-out;
+
+        > span {
+          position: relative;
+          z-index: 3;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: -1px;
+          right: -1px;
+          bottom: 0;
+          height: 3px;
+          background: lighten($blue, 30%);
+          transition: all 0.2s ease-out;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: $white;
+
+          &::before {
+            height: 100%;
+            background: $blue;
+          }
+        }
+      }
+    }
+  }
+}
