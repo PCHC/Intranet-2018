@@ -12,7 +12,7 @@ export default {
     });
 
     $('main a:not(.btn)').each(function() {
-      $(this).wrapInner('<span></span>').addClass('link-effect');
+      $(this).wrapInner('<span></span>').addClass('underline--magical');
     });
   },
   finalize() {
