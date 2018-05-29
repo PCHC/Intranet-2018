@@ -88,3 +88,26 @@
     }
   }
 }
+
+/** Anonymous post form */
+.ap-form {
+  &-field {
+    > input {
+      @extend .form-control;
+    }
+  }
+
+  &-submit-button {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+
+  &-submission-message {
+    @extend .alert;
+    @extend .alert-success;
+  }
+
+  &-error-message {
+    color: $red;
+  }
+}
