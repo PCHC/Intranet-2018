@@ -111,3 +111,35 @@ add_filter('get_the_archive_title', function($title) {
 
   return $title;
 });
+
+/**
+ * Changing password reset email
+ */
+add_filter( 'retrieve_password_message', function( $message, $key, $user_login ) {
+  $user_data = '';
+  // If no value is posted, return false
+  if( ! isset( $user_login )  ){
+    return '';
+  }
+  // Fetch user information from user_login
+  if ( strpos( $user_login, '@' ) ) {
+    $user_data = get_user_by( 'email', trim( $user_login ) );
+  } else {
+    $login = trim($user_login);
+    $user_data = get_user_by('login', $login);
+  }
+  if( ! $user_data  ){
+    return '';
+  }
+  $user_login = $user_data->user_login;
+  $user_email = $user_data->user_email;
+  // Setting up message for retrieve password
+  $message = "Looks like you want to reset your password!<br/><br/>";
+  $message .= "Please click on this link:<br/>";
+  $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
+  $message .= "<br/><br/>";
+  $message .= "If this was a mistake, just ignore this email and nothing will happen.<br/><br/>";
+  $message .= 'Kind Regards,<br/>PCHC Intranet Team';
+  // Return completed message for retrieve password
+  return $message;
+}, 10, 3);
