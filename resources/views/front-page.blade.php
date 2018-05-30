@@ -15,10 +15,13 @@
       <div class="row">
         <div class="announcements--primary">
           <?php
+            $sticky = get_option( 'sticky_posts' );
             $announcements_query = array(
               'category_name' => 'news',
               'showposts' => 1,
               'offset' => 0,
+              'ignore_sticky_posts' => 1,
+              'post__in' => $sticky,
             );
 
             query_posts( $announcements_query );
@@ -26,23 +29,39 @@
           @if( have_posts() )
             <div class="announcements--hero">
               @while( have_posts() ) @php( the_post() )
+                @if( has_post_thumbnail() )
+                  @php( $heroHasImage = true )
+                @endif
                 @include('partials.content-hero')
               @endwhile()
             </div>
           @endif
 
           <?php
-            $announcements_query['offset'] += $announcements_query['showposts'];
-
-            $announcements_query['showposts'] = 2;
-            query_posts( $announcements_query );
+            // Querying the rest of the posts, don't include first sticky post if one exists.
+            $announcements_query['post__in'] = null;
+            if( $sticky ) {
+              $announcements_query['post__not_in'] = array($sticky[0]);
+              $announcements_query['offset'] = -1;
+            }
           ?>
-          @if( have_posts() )
-            <div class="announcements--secondary row">
-              @while( have_posts() ) @php( the_post() )
-                @include('partials.content-'.get_post_type())
-              @endwhile()
-            </div>
+
+          @if( !$heroHasImage )
+
+            <?php
+              $announcements_query['offset'] += $announcements_query['showposts'];
+
+              $announcements_query['showposts'] = 2;
+              query_posts( $announcements_query );
+            ?>
+            @if( have_posts() )
+              <div class="announcements--secondary row">
+                @while( have_posts() ) @php( the_post() )
+                  @include('partials.content-'.get_post_type())
+                @endwhile()
+              </div>
+            @endif
+
           @endif
         </div>
 
@@ -50,10 +69,11 @@
         $announcements_query['offset'] += $announcements_query['showposts'];
 
         $announcements_query['showposts'] = 7;
+        // $announcements_query['showposts'] += $heroHasImage ? 2 : 0;
         query_posts( $announcements_query );
         ?>
         @if( have_posts() )
-          <div class="announcements--more postcolumn">
+          <div class="announcements--more postcolumn {{ $heroHasImage ? 'announcements--more__features' : '' }}">
               @while( have_posts() ) @php( the_post() )
                 @include('partials.content-'.get_post_type())
               @endwhile()
@@ -82,7 +102,7 @@
       <?php
         query_posts( array(
           'category_name' => 'leadership',
-          'showposts' => 10,
+          'showposts' => 5,
         ) );
       ?>
       @if( have_posts() )
@@ -107,7 +127,7 @@
       <?php
         query_posts( array(
           'category_name' => 'around-the-org',
-          'showposts' => 10,
+          'showposts' => 5,
         ) );
       ?>
       @if( have_posts() )
