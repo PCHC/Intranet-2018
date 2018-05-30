@@ -91,15 +91,14 @@
 
 /** Anonymous post form */
 .ap-form {
+  &-field-wrapper {
+    @extend .form-group;
+  }
+
   &-field {
     > input {
       @extend .form-control;
     }
-  }
-
-  &-submit-button {
-    @extend .btn;
-    @extend .btn-primary;
   }
 
   &-submission-message {
@@ -109,5 +108,15 @@
 
   &-error-message {
     color: $red;
+  }
+}
+
+.ap-form-submit-wrapper {
+  .ap-form-submit-button {
+    @extend .btn;
+    @extend .btn-primary;
+
+    display: inline-block;
+    width: auto;
   }
 }
