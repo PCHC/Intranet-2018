@@ -96,7 +96,7 @@
 
 @section('content')
   <div class="row">
-    <div class="col section--leadership postcolumn">
+    <div class="homepage-section homepage-section--leadership postcolumn">
       <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">
           <a href="{!! App::categorySlugLink('leadership') !!}">Leadership Reports</a>
@@ -121,7 +121,7 @@
       @php( wp_reset_query() )
     </div>
 
-    <div class="col section--around postcolumn">
+    <div class="homepage-section homepage-section--around postcolumn">
       <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">
           <a href="{!! App::categorySlugLink('around-the-org') !!}">Around the Organization</a>
@@ -134,6 +134,56 @@
       <?php
         query_posts( array(
           'category_name' => 'around-the-org',
+          'showposts' => 5,
+        ) );
+      ?>
+      @if( have_posts() )
+        @while( have_posts() ) @php(the_post())
+          @include('partials.content-'.get_post_type())
+        @endwhile
+      @endif
+
+      @php( wp_reset_query() )
+    </div>
+
+    <div class="homepage-section homepage-section--providers postcolumn">
+      <div class="section-title section-title__red row no-gutters">
+        <h4 class="section-title--content col">
+          <a href="{!! App::categorySlugLink('new-providers') !!}">New Providers</a>
+        </h4>
+        <div class="section-title--more col-2 text-right">
+          <a href="{!! App::categorySlugLink('new-providers') !!}">More <i class="fa fa-angle-right"></i></a>
+        </div>
+      </div>
+
+      <?php
+        query_posts( array(
+          'category_name' => 'new-providers',
+          'showposts' => 5,
+        ) );
+      ?>
+      @if( have_posts() )
+        @while( have_posts() ) @php(the_post())
+          @include('partials.content-'.get_post_type())
+        @endwhile
+      @endif
+
+      @php( wp_reset_query() )
+    </div>
+
+    <div class="homepage-section homepage-section--in-the-news postcolumn">
+      <div class="section-title section-title__red row no-gutters">
+        <h4 class="section-title--content col">
+          <a href="{!! App::categorySlugLink('in-the-news') !!}">PCHC in the News</a>
+        </h4>
+        <div class="section-title--more col-2 text-right">
+          <a href="{!! App::categorySlugLink('in-the-news') !!}">More <i class="fa fa-angle-right"></i></a>
+        </div>
+      </div>
+
+      <?php
+        query_posts( array(
+          'category_name' => 'in-the-news',
           'showposts' => 5,
         ) );
       ?>

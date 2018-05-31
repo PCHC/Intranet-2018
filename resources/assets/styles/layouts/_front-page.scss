@@ -138,7 +138,11 @@
 
       &--image {
         @include make-col-ready();
-        @include make-col(3);
+        @include make-col(12);
+
+        @extend .order-first;
+
+        text-align: center;
       }
 
       &--content {
@@ -164,4 +168,11 @@
       }
     }
   }
+}
+
+.homepage-section {
+  @include make-col-ready();
+  @include make-col(6);
+
+  margin-bottom: ($spacer*2);
 }
