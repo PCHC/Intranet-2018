@@ -4,6 +4,8 @@
 
   <div class="announcements">
     <div class="container-fluid container--announcements">
+      <div class="row">
+        <div class="col-9">
       <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">
           <a href="{!! App::categorySlugLink('news') !!}">Latest News</a>
@@ -82,6 +84,11 @@
         @endif
 
       </div>{{-- /.row --}}
+    </div>{{-- /.col-9 --}}
+    <aside class="sidebar--wrap col d-flex">
+      @include('partials.sidebar')
+    </aside>
+  </div>
     </div>{{-- /.container --}}
   </div>{{-- /.announcements --}}
   @php( wp_reset_query() )
