@@ -110,16 +110,22 @@
   main {
     article {
       @include make-col-ready();
-      @include make-col(3);
+      @include make-col(6);
+
+      margin-bottom: ($spacer * 2);
     }
   }
 
   .post {
     &--wrap {
-      text-align: center;
+      text-align: left;
     }
 
     &--image {
+      float: left;
+      max-width: 30%;
+      margin-right: $spacer;
+
       img {
         border-radius: 50%;
       }
@@ -127,10 +133,27 @@
 
     &--title {
       @extend .h4;
+
+      margin-bottom: ($spacer/2);
     }
 
     &--categories {
       display: none;
+    }
+
+    &--summary {
+      text-align: justify;
+      clear: both;
+    }
+
+    &--taxonomy {
+      li {
+        &:first-child {
+          a {
+            padding-left: 0;
+          }
+        }
+      }
     }
   }
 }
