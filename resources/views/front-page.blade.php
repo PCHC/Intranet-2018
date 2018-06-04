@@ -85,7 +85,7 @@
 
       </div>{{-- /.row --}}
     </div>{{-- /.col-9 --}}
-    <aside class="sidebar--wrap col d-flex">
+    <aside class="sidebar--wrap col-3 d-flex">
       @include('partials.sidebar')
     </aside>
   </div>
