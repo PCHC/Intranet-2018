@@ -21,7 +21,12 @@
       <div class="container-fluid header-bottom--container">
         <nav class="navbar navbar-expand-md navbar-light justify-content-around">
           <div class="collapse navbar-collapse" id="navbarSecondary">
-            {!! wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'nav navbar-nav nav-secondary mr-auto', 'depth' => 1]) !!}
+            {!! wp_nav_menu([
+              'theme_location' => 'secondary_navigation',
+              'menu_class' => 'nav navbar-nav nav-secondary mr-auto',
+              'items_wrap'     => '<ul id="%1$s" class="%2$s"><li class="menu-item menu-title">' . __( 'Quick Links:' ) . '</li>%3$s</ul>',
+              'depth' => 1
+            ]) !!}
           </div>
           @include('partials.search-form')
         </nav>

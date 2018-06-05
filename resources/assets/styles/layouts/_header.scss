@@ -103,6 +103,13 @@
       color: $gray-800;
     }
   }
+
+  .menu-title {
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-style: italic;
+    color: $gray-600;
+  }
 }
 
 .header-bottom {
