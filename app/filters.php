@@ -134,12 +134,12 @@ add_filter( 'retrieve_password_message', function( $message, $key, $user_login )
   $user_login = $user_data->user_login;
   $user_email = $user_data->user_email;
   // Setting up message for retrieve password
-  $message = "Looks like you want to reset your password!<br/><br/>";
-  $message .= "Please click on this link:<br/>";
+  $message = "Looks like you want to reset your password!\n\r\n\r";
+  $message .= "Please click on this link:\n\r\n\r";
   $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
-  $message .= "<br/><br/>";
-  $message .= "If this was a mistake, just ignore this email and nothing will happen.<br/><br/>";
-  $message .= 'Kind Regards,<br/>PCHC Intranet Team';
+  $message .= "\n\r\n\r";
+  $message .= "If this was a mistake, just ignore this email and nothing will happen.\n\r\n\r";
+  $message .= "Kind Regards,\n\rPCHC Intranet Team";
   // Return completed message for retrieve password
   return $message;
 }, 10, 3);
