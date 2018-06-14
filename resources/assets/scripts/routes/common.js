@@ -11,7 +11,7 @@ export default {
       $(this).append(' <i class="fa fa-angle-down"></i>');
     });
 
-    $('main a:not(.btn)').each(function() {
+    $('main a:not(.btn, .nomagic)').each(function() {
       $(this).wrapInner('<span></span>').addClass('link--magic');
     });
   },

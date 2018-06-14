@@ -184,3 +184,34 @@
     }
   }
 }
+
+.post-nav {
+  margin: ($spacer) 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.8rem;
+  opacity: 0.8;
+
+  @extend .d-flex;
+  @extend .justify-content-between;
+  @extend .align-items-center;
+
+  &--link {
+    @extend .d-flex;
+    @extend .justify-content-start;
+    @extend .align-items-center;
+
+    max-width: 45%;
+
+    &__next {
+      @extend .flex-row-reverse;
+
+      text-align: right;
+    }
+
+    .fas,
+    .svg-inline--fa {
+      margin: ($spacer * 0.5);
+    }
+  }
+}
