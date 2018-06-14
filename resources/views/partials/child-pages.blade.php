@@ -64,35 +64,30 @@
   @if( $pgParentOutput || $pgChildrenOutput )
     <aside class="page-children">
       @if( $pgGrandparentOutput && !$pgChildrenOutput )
-        <strong>Grandparent</strong>
         <ul class="page-children--nav page-children--nav__grandparent">
           {!! $pgGrandparentOutput !!}
         </ul>
       @endif
 
       @if( $pgParentOutput )
-        <strong>Parent</strong>
         <ul class="page-children--nav page-children--nav__parent">
           {!! $pgParentOutput !!}
         </ul>
       @endif
 
       @if( ($pgSelfOutput && $pgChildrenOutput ) )
-        <strong>Self</strong>
         <ul class="page-children--nav page-children--nav__self">
           {!! $pgSelfOutput !!}
         </ul>
       @endif
 
       @if( $pgSiblingsOutput && !$pgChildrenOutput )
-        <strong>Siblings</strong>
         <ul class="page-children--nav page-children--nav__siblings">
           {!! $pgSiblingsOutput !!}
         </ul>
       @endif
 
       @if( $pgChildrenOutput )
-        <strong>Children</strong>
         <ul class="page-children--nav page-children--nav__children">
           {!! $pgChildrenOutput !!}
         </ul>
