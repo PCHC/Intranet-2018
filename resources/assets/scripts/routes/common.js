@@ -1,6 +1,7 @@
 import fontawesome from '@fortawesome/fontawesome';
 import solid from '@fortawesome/fontawesome-free-solid';
 import regular from '@fortawesome/fontawesome-free-regular';
+import brands from '@fortawesome/fontawesome-free-brands';
 
 export default {
   init() {
@@ -17,6 +18,6 @@ export default {
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
-    fontawesome.library.add(solid,regular);
+    fontawesome.library.add(solid,regular,brands);
   },
 };
