@@ -7,7 +7,13 @@
         <time class="post--published" datetime="{{ get_post_time('c', true) }}">
           Posted {{ get_the_date('F j, Y \a\t g:i a') }}</time>
         <span class="byline author vcard post--author">
-          by <a href="{{ get_author_posts_url(get_the_author_meta('ID')) }}" rel="author" class="fn">{{ get_the_author() }}</a>
+          by <?php
+          $anonymousAuthor = get_post_meta( $post->ID, 'ap_author_name', true );
+          if( !empty( $anonymousAuthor ) ) { ?>
+            <span rel="author" class="fn">{{ $anonymousAuthor }}</a>
+          <?php } else { ?>
+            <a href="{{ get_author_posts_url(get_the_author_meta('ID')) }}" rel="author" class="fn">{{ get_the_author() }}</a>
+          <?php } ?>
         </span>
       </div>
       <div class="col text-right">
