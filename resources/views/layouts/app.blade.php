@@ -2,6 +2,10 @@
 <html @php(language_attributes())>
   @include('partials.head')
   <body @php(body_class())>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PBV8SSH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     @include('partials.alert')
     @php(do_action('get_header'))
     @include('partials.header')
