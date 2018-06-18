@@ -3,7 +3,7 @@
   @include('partials.head')
   <body @php(body_class())>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PBV8SSH"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PR6NC2R"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     @include('partials.alert')
