@@ -8,7 +8,7 @@
         <div class="col-9">
       <div class="section-title section-title__red row no-gutters">
         <h4 class="section-title--content col">
-          <a href="{!! App::categorySlugLink('news') !!}">Latest News</a>
+          <a href="{!! App::categorySlugLink('news') !!}">Top Stories</a>
         </h4>
         <div class="section-title--more col-2 text-right">
           <a href="{!! App::categorySlugLink('news') !!}page/2/">More News <i class="fa fa-angle-right"></i></a>
