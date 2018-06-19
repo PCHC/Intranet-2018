@@ -7,6 +7,14 @@ export default {
   init() {
     // JavaScript to be fired on all pages
 
+    // Open external links in new tabs
+    $('a').each(function() {
+      var a = new RegExp('/' + window.location.host + '/');
+      if(!a.test(this.href)) {
+        $(this).attr("target","_blank");
+      }
+    });
+
     // Add indicator that menu item has children
     $('.menu-item-has-children > a').each(function() {
       $(this).append(' <i class="fa fa-angle-down"></i>');
