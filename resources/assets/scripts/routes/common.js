@@ -21,7 +21,7 @@ export default {
     });
 
     $('main a:not(.btn, .nomagic)').each(function() {
-      $(this).wrapInner('<span></span>').addClass('link--magic');
+      $(this).not($(this).has('img')).wrapInner('<span></span>').addClass('link--magic');
     });
   },
   finalize() {
