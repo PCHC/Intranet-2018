@@ -55,6 +55,32 @@
   @extend .sr-only-focusable;
 }
 
+/** Image galleries */
+.gallery {
+  @extend .d-flex;
+  @extend .flex-wrap;
+
+  text-align: center;
+
+  img {
+    @extend .img-thumbnail;
+
+    max-width: 100%;
+  }
+
+  // Loop through .gallery-columns-1 to .gallery-columns-9
+  @for $i from 1 through 9 {
+    &.gallery-columns-#{$i} {
+      figure {
+        flex: 0 0 (100% / #{$i});
+        max-width: (100% / #{$i});
+        padding: $spacer;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
 /** Gutenberg Styles */
 p.wp-block-subhead {
   font-size: 1.1em;
