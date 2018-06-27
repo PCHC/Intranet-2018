@@ -27,24 +27,8 @@ class PageDirectory extends Controller
   }
 
   public function results($clause = '') {
+    return $this->employees();
     $this->doQuery($clause);
-    echo '<div class="table-responsive"><table class="table table-striped table-hover">';
-    echo '<thead><tr>';
-    //echo '<th>Eenumber</th>';
-    echo '<th>Last Name</th>';
-    echo '<th>First Name</th>';
-    echo '<th>Extension</th>';
-    echo '<th>Alternate Extension</th>';
-    echo '<th>Email Address</th>';
-    echo '<th>Location</th>';
-    echo '<th>Position</th>';
-    //echo '<th>HomePhone</th>';
-    //echo '<th>WorkPhone</th>';
-    //echo '<th>CellPhone</th>';
-    //echo '<th>PagerPhone</th>';
-    echo '</tr></thead><tbody>';
-    $this->employees();
-    echo '</tbody></table></div>';
   }
 
   public function allLocations() {
@@ -61,10 +45,8 @@ class PageDirectory extends Controller
     } else {
       $allLocations = $this->allLocations();
     }
-    foreach( $allLocations as $location ){
-      echo '<h2>' . $location . '</h2>';
-      $this->results('WHERE BranchName="' . $location . '" ORDER BY LN, FN');
-    }
+    return $allLocations;
+
   }
 
   public function search($search = '') {
@@ -72,22 +54,7 @@ class PageDirectory extends Controller
   }
 
   protected function employees() {
-    while( $employee = $this->dirQueryResults ) {
-      echo '<tr>';
-        //echo '<td>' . $employee['Eenumber'] . '</td>';
-        echo '<td>' . $employee['LN'] . '</td>';
-        echo '<td>' . $employee['FN'] . '</td>';
-        echo '<td>' . $employee['Ext1'] . '</td>';
-        echo '<td>' . $employee['Ext2'] . '</td>';
-        echo '<td><a href="mailto:' . $this->filterEmail($employee['EmailAddress']) . '">' . $this->filterEmail($employee['EmailAddress']) . '</a></td>';
-        echo '<td>' . $employee['BranchName'] . '</td>';
-        echo '<td>' . $employee['Position'] . '</td>';
-        //echo '<td>' . $employee['HomePhone'] . '</td>';
-        //echo '<td>' . $employee['WorkPhone'] . '</td>';
-        //echo '<td>' . $employee['CellPhone'] . '</td>';
-        //echo '<td>' . $employee['PagerPhone'] . '</td>';
-      echo '</tr>';
-    }
+    return $this->$queryResults;
   }
 
   protected function filterEmail($email) {
