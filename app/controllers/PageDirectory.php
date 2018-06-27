@@ -22,8 +22,11 @@ class PageDirectory extends Controller
 
     //$this->dirQueryResults = mssql_query($this->dirQuery . $clause, $this->link, 1000);
 
-    $query = $this->db->query($this->query . $clause);
-    return $query->fetch();
+    $sth = $this->db->prepare($this->query . $clause);
+    $sth->execute();
+    $result = $sth->fetchAll();
+    return $result;
+
   }
 
   public function getLocations($locationFilter = '') {
@@ -32,17 +35,14 @@ class PageDirectory extends Controller
     } else {
       $locations = $this->allLocations();
     }
-
     return $locations;
   }
 
-  public function getLocationEmployees($location) {
-    return $this->doQuery('WHERE BranchName="' . $location . '" ORDER BY LN, FN');
-  }
 
   public function returnResults() {
     $locations = $this->getLocations();
     foreach($locations as $location) {
+      if($location == NULL) continue;
       $results[] = $this->getLocationEmployees($location);
     }
     return $results;
@@ -56,8 +56,13 @@ class PageDirectory extends Controller
     return $locations;
   }
 
+  public function getLocationEmployees($location='') {
+    $results = $this->doQuery('WHERE BranchName="'.$location.'" ORDER BY LN, FN');
+    return $results;
+  }
+
   public function search($search = '') {
-    $this->results('WHERE LN LIKE "%' . $search . '%" OR FN LIKE "%' . $search . '%" ORDER BY LN, FN');
+    return $this->doQuery('WHERE LN LIKE "%' . $search . '%" OR FN LIKE "%' . $search . '%" ORDER BY LN, FN');
   }
 
   protected function filterEmail($email) {

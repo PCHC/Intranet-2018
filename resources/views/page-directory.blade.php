@@ -7,4 +7,5 @@
     </article>
   @endwhile
   @debug
+  @dump($do_query)
 @endsection
