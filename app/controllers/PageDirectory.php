@@ -23,7 +23,6 @@ class PageDirectory extends Controller
     //$this->dirQueryResults = mssql_query($this->dirQuery . $clause, $this->link, 1000);
 
     $query = $this->db->query($this->query . $clause);
-    $this->$queryResults = $query->fetch();
     return $query->fetch();
   }
 
@@ -42,7 +41,6 @@ class PageDirectory extends Controller
   }
 
   public function returnResults() {
-    $results = [];
     $locations = $this->getLocations();
     foreach($locations as $location) {
       $results[] = $this->getLocationEmployees($location);
