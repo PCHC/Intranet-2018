@@ -111,7 +111,7 @@ class PageDirectory extends Controller
 
     // Connect to MSSQL
     try {
-      $db = new \PDO("sqlsrv:Server=".$EE_DB_HOST.";Database="$EE_DB_NAME, $EE_DB_USER, $EE_DB_PASSWORD);
+      $db = new \PDO("sqlsrv:Server=".$EE_DB_HOST.";Database=".$EE_DB_NAME, $EE_DB_USER, $EE_DB_PASSWORD);
     } catch (\PDOException $e) {
       echo $e->getMessage();
     }
