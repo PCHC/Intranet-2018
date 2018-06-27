@@ -15,7 +15,7 @@ class PageDirectory extends Controller
     //mssql_select_db('pchc', $this->link);
   }
 
-  public function doQuery($clause = '') {
+  private function doQuery($clause = '') {
     if( $clause ) {
       $clause = ' ' . $clause;
     }
@@ -26,10 +26,9 @@ class PageDirectory extends Controller
     $sth->execute();
     $result = $sth->fetchAll();
     return $result;
-
   }
 
-  public function getLocations($locationFilter = '') {
+  private function getLocations($locationFilter = '') {
     if($locationFilter) {
       $locations[] = $locationFilter;
     } else {
@@ -38,12 +37,15 @@ class PageDirectory extends Controller
     return $locations;
   }
 
+  public static function returnResults($locationFilter = null, $search = null) {
+    if( $search ) {
+      return $this->search($search);
+    }
 
-  public function returnResults() {
-    $locations = $this->getLocations();
+    $locations = $this->getLocations( $locationFilter );
     foreach($locations as $location) {
       if($location == NULL) continue;
-      $results[] = $this->getLocationEmployees($location);
+      $results[$location] = $this->getLocationEmployees($location);
     }
     return $results;
   }
@@ -56,21 +58,21 @@ class PageDirectory extends Controller
     return $locations;
   }
 
-  public function getLocationEmployees($location='') {
+  private function getLocationEmployees($location='') {
     $results = $this->doQuery('WHERE BranchName="'.$location.'" ORDER BY LN, FN');
     return $results;
   }
 
-  public function search($search = '') {
+  private function search($search = '') {
     return $this->doQuery('WHERE LN LIKE "%' . $search . '%" OR FN LIKE "%' . $search . '%" ORDER BY LN, FN');
   }
 
-  protected function filterEmail($email) {
+  private function filterEmail($email) {
     $email = str_replace('@pchcbangor.org', '@pchc.com', $email);
     return $email;
   }
 
-  protected function dbConnect() {
+  private function dbConnect() {
     /** The name of the database */
     $EE_DB_NAME = 'pchc';
 

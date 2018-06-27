@@ -7,5 +7,7 @@
     </article>
   @endwhile
   @debug
-  @dump($do_query)
+  <pre>
+  <?php print_r($return_results); ?>
+  </pre>
 @endsection
