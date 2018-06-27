@@ -24,11 +24,30 @@ class PageDirectory extends Controller
 
     $query = $this->db->query($this->query . $clause);
     $this->$queryResults = $query->fetch();
+    return $query->fetch();
   }
 
-  public function results($clause = '') {
-    return $this->employees();
-    $this->doQuery($clause);
+  public function getLocations($locationFilter = '') {
+    if($locationFilter) {
+      $locations[] = $locationFilter;
+    } else {
+      $locations = $this->allLocations();
+    }
+
+    return $locations;
+  }
+
+  public function getLocationEmployees($location) {
+    return $this->doQuery('WHERE BranchName="' . $location . '" ORDER BY LN, FN');
+  }
+
+  public function returnResults() {
+    $results = [];
+    $locations = $this->getLocations();
+    foreach($locations as $location) {
+      $results[] = $this->getLocationEmployees($location);
+    }
+    return $results;
   }
 
   public function allLocations() {
@@ -39,22 +58,8 @@ class PageDirectory extends Controller
     return $locations;
   }
 
-  public function locations($locationFilter = '') {
-    if($locationFilter) {
-      $allLocations[] = $locationFilter;
-    } else {
-      $allLocations = $this->allLocations();
-    }
-    return $allLocations;
-
-  }
-
   public function search($search = '') {
     $this->results('WHERE LN LIKE "%' . $search . '%" OR FN LIKE "%' . $search . '%" ORDER BY LN, FN');
-  }
-
-  protected function employees() {
-    return $this->$queryResults;
   }
 
   protected function filterEmail($email) {
