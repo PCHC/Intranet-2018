@@ -27,9 +27,9 @@
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="search" value="<?php echo $EEDB->search; ?>">
                 <div class="input-group-append">
-                  <button class="btn btn-primary" type="submit">Search</button>
+                  <button class="btn btn-primary" type="submit">Search <i class="fas fa-search"></i></button>
                   <?php if( $EEDB->search ) { ?>
-                  <a class="btn btn-outline-secondary" href="{{ the_permalink() }}">Clear</a>
+                  <a class="btn btn-outline-secondary" href="{{ the_permalink() }}">Clear <i class="fas fa-times"></i></a>
                   <?php } ?>
                 </div>
               </div>
@@ -48,9 +48,9 @@
                   <?php } ?>
                 </select>
                 <div class="input-group-append">
-                  <button class="btn btn-primary" type="submit">Filter</button>
+                  <button class="btn btn-primary" type="submit">Filter <i class="fas fa-filter"></i></button>
                   <?php if( $EEDB->locationFilter ) { ?>
-                  <a class="btn btn-outline-secondary" href="{{ the_permalink() }}">Clear</a>
+                  <a class="btn btn-outline-secondary" href="{{ the_permalink() }}">Clear <i class="fas fa-times"></i></a>
                   <?php } ?>
                 </div>
               </div>
@@ -70,7 +70,7 @@
               <th>Last Name</th>
               <th>First Name</th>
               <th>Extension</th>
-              <th>Alternate Extension</th>
+              <th>Alt. Extension</th>
               <th>Email</th>
               <th>Location/Department</th>
               <th>Position</th>
