@@ -18,7 +18,7 @@
             @yield('content')
           </main>
           @include('partials.child-pages')
-          @if (App\display_sidebar() && !is_front_page() )
+          @if (App\display_sidebar() && !is_front_page() && !is_page('directory') )
             <aside class="sidebar--wrap col-md-4 col-lg-3">
               @include('partials.sidebar')
             </aside>
