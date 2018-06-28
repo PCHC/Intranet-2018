@@ -8,6 +8,6 @@
   @endwhile
   @debug
   <pre>
-  <?php print_r($return_results); ?>
+    <?php print_r($get_employees); ?>
   </pre>
 @endsection

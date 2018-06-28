@@ -6,73 +6,96 @@ use Sober\Controller\Controller;
 
 class PageDirectory extends Controller
 {
-  public $db;
-  public $query = 'SELECT * FROM EmployeeContactInfo';
-  private $queryResults;
+  private $db;
+  private $connectionOptions = array(
+    "Database" => "pchc",
+    "Uid" => "Intranet",
+    "PWD" => "Intranet",
+  );
+  public $locationFilter = null;
+  public $search = null;
+  private $baseQuery = "SELECT * FROM EmployeeContactInfo";
 
-  public function __construct() {
+  public function __construct()
+  {
     $this->db = $this->dbConnect();
-    //mssql_select_db('pchc', $this->link);
+    $this->locationFilter = !empty($_GET['BranchName']) ? $_GET['BranchName'] : '';
+    $this->search = !empty($_GET['search']) ? $_GET['search'] : '';
   }
 
-  private function doQuery($clause = '') {
-    if( $clause ) {
-      $clause = ' ' . $clause;
+  private function doQuery($clause = '')
+  {
+    $query = $this->baseQuery;
+    if ($clause) {
+      $query = $query . ' ' . $clause;
     }
 
-    //$this->dirQueryResults = mssql_query($this->dirQuery . $clause, $this->link, 1000);
-
-    $sth = $this->db->prepare($this->query . $clause);
+    $sth = $this->db->prepare($query);
     $sth->execute();
     $result = $sth->fetchAll();
     return $result;
   }
 
-  private function getLocations($locationFilter = '') {
-    if($locationFilter) {
-      $locations[] = $locationFilter;
+  public function getLocations()
+  {
+    if ($this->locationFilter) {
+      $locations[] = $this->locationFilter;
     } else {
-      $locations = $this->allLocations();
+      $locations = $this->getAllLocations();
     }
     return $locations;
   }
 
-  public static function returnResults($locationFilter = null, $search = null) {
-    if( $search ) {
-      return $this->search($search);
-    }
-
-    $locations = $this->getLocations( $locationFilter );
-    foreach($locations as $location) {
-      if($location == NULL) continue;
-      $results[$location] = $this->getLocationEmployees($location);
-    }
-    return $results;
-  }
-
-  public function allLocations() {
-    $locationsQuery = $this->db->query('SELECT DISTINCT BranchName FROM EmployeeContactInfo');
-    while( $location = $locationsQuery->fetch() ) {
+  public function getAllLocations()
+  {
+    $query = $this->db->prepare("SELECT DISTINCT BranchName FROM EmployeeContactInfo");
+    $query->execute();
+    while ($location = $query->fetch()) {
       $locations[] = $location[0];
     }
     return $locations;
   }
 
-  private function getLocationEmployees($location='') {
-    $results = $this->doQuery('WHERE BranchName="'.$location.'" ORDER BY LN, FN');
-    return $results;
+  public function getEmployees($location = null, $sort = null)
+  {
+    if ($this->search) {
+      $employees['header'] = 'Search results for "' . $this->search . '"';
+      $employees['employees'] = $this->doSearch($this->search);
+      return $employees;
+    }
+
+    $branchName = $this->locationFilter ? $this->locationFilter : $location;
+    if ($branchName) {
+      $employees['header'] = $branchName;
+      $employees['employees'] = $this->doQuery("WHERE BranchName='".$branchName."' ORDER BY LN, FN");
+    }
+    return $employees;
+
+
+    $locations = $this->getLocations();
+    foreach ($locations as $location) {
+      if ($location == null) {
+          continue;
+      }
+      $allEmployees[$location] = $this->getLocationEmployees($location);
+    }
+    return $allEmployees;
   }
 
-  private function search($search = '') {
-    return $this->doQuery('WHERE LN LIKE "%' . $search . '%" OR FN LIKE "%' . $search . '%" ORDER BY LN, FN');
+  private function getLocationEmployees($location = '')
+  {
+    $results = $this->doQuery("WHERE BranchName='".$location."' ORDER BY LN, FN");
+      return $results;
   }
 
-  private function filterEmail($email) {
-    $email = str_replace('@pchcbangor.org', '@pchc.com', $email);
-    return $email;
+  private function doSearch($search = '')
+  {
+    $searchQuery = $this->doQuery("WHERE LN LIKE '%".$search."%' OR FN LIKE '%".$search."%' ORDER BY LN, FN");
+      return $searchQuery;
   }
 
-  private function dbConnect() {
+  private function dbConnect()
+  {
     /** The name of the database */
     $EE_DB_NAME = 'pchc';
 
