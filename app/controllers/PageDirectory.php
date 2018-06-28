@@ -94,6 +94,11 @@ class PageDirectory extends Controller
       return $searchQuery;
   }
 
+  public static function filterEmail($email) {
+    $email = str_replace('@pchcbangor.org', '@pchc.com', $email);
+    return $email;
+  }
+
   private function dbConnect()
   {
     /** The name of the database */

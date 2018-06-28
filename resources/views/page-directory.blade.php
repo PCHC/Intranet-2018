@@ -84,7 +84,11 @@
               <td><?php echo $employee['FN']; ?></td>
               <td><?php echo $employee['Ext1']; ?></td>
               <td><?php echo $employee['Ext2']; ?></td>
-              <td><?php echo $employee['EmailAddress']; ?></td>
+              <td>
+                <a href="mailto:<?php echo $EEDB->filterEmail($employee['EmailAddress']); ?>">
+                <?php echo $EEDB->filterEmail($employee['EmailAddress']); ?>
+                </a>
+              </td>
               <td><?php echo $employee['BranchName']; ?></td>
               <td><?php echo $employee['Position']; ?></td>
             </tr>
