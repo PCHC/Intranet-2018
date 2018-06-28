@@ -23,7 +23,7 @@
         <div class="card">
           <div class="card-header">Search by first or last name</div>
           <div class="card-body">
-            <form method="get">
+            <form action="{{ the_permalink() }}" method="get">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="search" value="<?php echo $EEDB->search; ?>">
                 <div class="input-group-append">
@@ -39,7 +39,7 @@
         <div class="card">
           <div class="card-header">Filter by location/department</div>
           <div class="card-body">
-            <form method="get">
+            <form action="{{ the_permalink() }}" method="get">
               <div class="input-group">
                 <select class="custom-select" name="BranchName">
                   <option>Select:</option>
