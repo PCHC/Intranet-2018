@@ -10,14 +10,12 @@
     @php(do_action('get_header'))
     @include('partials.header')
     <div class="document-wrap" role="document">
-      @yield('announcements')
       <div class="container-fluid container--main">
         <div class="content row">
           <main class="main col">
             @include('partials.breadcrumbs')
             @yield('content')
           </main>
-          @include('partials.child-pages')
         </div>
       </div>
     </div>
