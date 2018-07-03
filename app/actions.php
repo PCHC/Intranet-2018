@@ -33,13 +33,7 @@ namespace App;
 
        if( has_post_thumbnail() ) {
          $body .= '<a href="'.get_the_permalink().'">';
-          $body .= get_the_post_thumbnail(
-            get_the_ID(),
-            'thumbnail',
-            array(
-              'style' => 'float: left; margin-right: 12px; margin-bottom: 12px; max-width: 100px;'
-            )
-          );
+          $body .= '<img src="'.get_site_url().'/'.get_the_post_thumbnail_url(get_the_post_ID(), 'thumbnail').'" style="float: left; margin-right: 12px; margin-bottom: 12px; max-width: 100px;" alt=""/>';
          $body .= '</a>';
        }
 
