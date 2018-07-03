@@ -47,6 +47,22 @@ add_action( 'send_email_digest', function () {
         $body .= has_post_thumbnail() ? '<td>' : '<td colspan="2">';
 
           $body .= '<h2 style="font-size: 24px; font-weight: bold; margin-top:0;"><a href="'.get_the_permalink().'?utm_source=latest-news&utm_medium=email&utm_content=title">'.get_the_title().'</a></h2>';
+
+          $body .= '<p><small><em>';
+            $i = 0;
+            $len = count(get_the_category());
+            foreach( get_the_category() as $category ) {
+              $body .= '<a href="'.get_category_link($category->term_id).'?utm_source=latest-news&utm_medium=email&utm_content=category">';
+                $body .= $category->name;
+              $body .= '</a>';
+
+              if($i !== $len - 1) {
+                $body .= ', ';
+              }
+              $i++;
+            }
+          $body .= '</em></small></p>';
+
           $body .= "<p style=\"margin-bottom: 36px;\"><em>" . get_the_date('F j, Y') . " &mdash; </em>" . get_the_excerpt() . "</p>";
         $body .= '</td>';
       $body .= '</tr>';
