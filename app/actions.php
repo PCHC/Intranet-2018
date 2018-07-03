@@ -18,7 +18,7 @@ add_action( 'send_email_digest', function () {
     ),
   );
 
-  $to = 'IntranetTest@pchc.com';
+  $to = 'cviolette@pchc.com,sdubay@pchc.com';
   $subject = 'Latest PCHC Employee News - ' . date('F j, Y');
   $body = "<p>To keep you well-informed, PCHC's Employee Intranet has a new feature to email you a review of the news articles posted recently.</p>";
   // $ body = "<p>To keep you well-informed, PCHC's Employee Intranet emails a weekly review of the news articles posted recently.";
