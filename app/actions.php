@@ -35,9 +35,9 @@ namespace App;
          $body .= '<a href="'.get_the_permalink().'">';
           $body .= get_the_post_thumbnail(
             get_the_ID(),
-            'post-thumbnail',
+            'thumbnail',
             array(
-              'style' => 'float: left; margin-right: 12px;'
+              'style' => 'float: left; margin-right: 12px; margin-bottom: 12px; max-width: 100px;'
             )
           );
          $body .= '</a>';
@@ -45,7 +45,7 @@ namespace App;
 
        $body .= '<h2 style="font-size: 24px; font-weight: bold;"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h2>';
        $body .= "<p><em>" . get_the_date('F j, Y') . " &mdash; </em>" . get_the_excerpt() . "</p>";
-       $body .= '<hr/><div style="clear: both;"></div>';
+       $body .= '<hr style="clear: both;"/>';
      }
 
      $body .= '<br/><hr/><br/><p>Stay up to date by visiting the <a href="' . get_home_url() . '">PCHC Employee Intranet</a>.</p>';
