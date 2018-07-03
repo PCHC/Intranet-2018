@@ -5,8 +5,8 @@ namespace App;
 /**
 * Custom actions
 */
-add_action( 'send_email_digest', function () {
-  $args = array(
+add_action( 'send_email_digest', function ($args) {
+  $queryArgs = array(
     'post_type' => 'post',
     'post_status' => 'publish',
     'orderby' => 'date',
@@ -18,18 +18,19 @@ add_action( 'send_email_digest', function () {
     ),
   );
 
-  $to = 'cviolette@pchc.com,sdubay@pchc.com';
+  $to = $args[0];
   $subject = 'Latest PCHC Employee News - ' . date('F j, Y');
   $body = "<p>To keep you well-informed, PCHC's Employee Intranet has a new feature to email you a review of the news articles posted recently.</p>";
   // $ body = "<p>To keep you well-informed, PCHC's Employee Intranet emails a weekly review of the news articles posted recently.";
   $body .= "<p>This first edition will feature articles posted in the last 2 weeks. Future editions will come out on Fridays and feature articles posted during the past week.</p>";
   $body .= "<p><em>Here's what you may have missed:</em></p>";
+  $body .= print_r($args,TRUE);
   // $body .= "<p><em>Here's what you may have missed this week:</em></p>";
   $headers = array(
     'Content-Type: text/html; charset=UTF-8'
   );
 
-  $digestQuery = new \WP_Query( $args );
+  $digestQuery = new \WP_Query( $queryArgs );
 
   if( $digestQuery->have_posts() ) {
 
