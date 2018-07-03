@@ -31,11 +31,24 @@ namespace App;
      while( $digestQuery->have_posts() ) {
        $digestQuery->the_post();
 
-       $body .= '<h2><a href="'.get_the_permalink().'">'.get_the_title().'</a></h2>';
+       if( has_post_thumbnail() ) {
+         $body .= '<a href="'.get_the_permalink().'">';
+          $body .= get_the_post_thumbnail(
+            get_the_ID(),
+            'post-thumbnail',
+            array(
+              'style' => 'float: left; margin-right: 12px;'
+            )
+          );
+         $body .= '</a>';
+       }
+
+       $body .= '<h2 style="font-size: 24px; font-weight: bold;"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h2>';
        $body .= "<p><em>" . get_the_date('F j, Y') . " &mdash; </em>" . get_the_excerpt() . "</p>";
+       $body .= '<hr/><div style="clear: both;"></div>';
      }
 
-     $body .= '<p>Stay up to date by visiting the <a href="' . get_home_url() . '">PCHC Employee Intranet</a>.</p>';
+     $body .= '<br/><hr/><br/><p>Stay up to date by visiting the <a href="' . get_home_url() . '">PCHC Employee Intranet</a>.</p>';
      wp_mail($to, $subject, $body, $headers);
    }
 
