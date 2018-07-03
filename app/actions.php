@@ -13,14 +13,16 @@ add_action( 'send_email_digest', function () {
     'order' => 'DESC',
     'date_query' => array(
       array(
-        'after' => '1 week ago'
+        'after' => '2 weeks ago'
       ),
     ),
   );
 
   $to = 'cviolette@pchc.com';
   $subject = 'Latest PCHC Employee News - ' . date('F j, Y');
-  $body = "<p>Here's what you may have missed this week:</p>";
+  $body = "<p>To keep you well-informed, PCHC's Employee Intranet has a new feature to email you a review of the news articles posted in the past week.</p>";
+  $body .= "<p>This first edition will feature articles posted in the last 2 weeks. Future editions will come out on Fridays and feature articles posted during the past week.</p>"
+  $body .= "<p><em>Here's what you may have missed:</em></p>";
   $headers = array(
     'Content-Type: text/html; charset=UTF-8'
   );
@@ -48,7 +50,7 @@ add_action( 'send_email_digest', function () {
 
           $body .= '<h2 style="font-size: 24px; font-weight: bold; margin-top:0;"><a href="'.get_the_permalink().'?utm_source=latest-news&utm_medium=email&utm_content=title">'.get_the_title().'</a></h2>';
 
-          $body .= '<p><small><em>';
+          $body .= '<p><small><em>Categories: ';
             $i = 0;
             $len = count(get_the_category());
             foreach( get_the_category() as $category ) {
