@@ -32,17 +32,17 @@ namespace App;
        $digestQuery->the_post();
 
        if( has_post_thumbnail() ) {
-         $body .= '<a href="'.get_the_permalink().'">';
-          $body .= '<img src="'.get_site_url().'/'.get_the_post_thumbnail_url(get_the_ID(), 'thumbnail').'" style="float: left; margin-right: 12px; margin-bottom: 12px; max-width: 100px;" alt=""/>';
+         $body .= '<a href="'.get_the_permalink().'?utm_source=latest-news&utm_medium=email&utm_content=thumbnail">';
+          $body .= '<img src="'.get_site_url().'/'.get_the_post_thumbnail_url(get_the_ID(), 'thumbnail').'" style="float: left; margin-right: 12px; max-width: 100px;" alt="'.get_the_title().'"/>';
          $body .= '</a>';
        }
 
-       $body .= '<h2 style="font-size: 24px; font-weight: bold;"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h2>';
+       $body .= '<h2 style="font-size: 24px; font-weight: bold; margin-top:0;"><a href="'.get_the_permalink().'?utm_source=latest-news&utm_medium=email&utm_content=title">'.get_the_title().'</a></h2>';
        $body .= "<p><em>" . get_the_date('F j, Y') . " &mdash; </em>" . get_the_excerpt() . "</p>";
        $body .= '<hr style="clear: both;"/>';
      }
 
-     $body .= '<br/><hr/><br/><p>Stay up to date by visiting the <a href="' . get_home_url() . '">PCHC Employee Intranet</a>.</p>';
+     $body .= '<br/><p><strong>Stay up to date by visiting the <a href="' . get_home_url() . '?utm_source=latest-news&utm_medium=email&utm_content=bottomlink">PCHC Employee Intranet</a>.</strong></p>';
      wp_mail($to, $subject, $body, $headers);
    }
 
