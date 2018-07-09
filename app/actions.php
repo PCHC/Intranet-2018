@@ -79,7 +79,7 @@ add_action( 'send_email_digest', function ($args = null) {
   $body .= '<hr/><p><strong>Stay up to date by visiting the <a href="' . get_home_url() . '/?utm_source=latest-news&utm_medium=email&utm_content=bottomlink">PCHC Employee Intranet</a>.</strong></p>';
 
   // Adding UTM tags to readmore links.
-  $pattern = '/(?<=readmore"\shref=")(https?:\/\/intranet\/[a-zA-Z0-9\/\-\_\.\=\;]*)/m';
+  $pattern = '/(?<=readmore"\shref=")(https?:\/\/intranet\/[\w\/\-\.\=\;]*)/m';
   $replacement = '$1?utm_source=latest-news&utm_medium=email&utm_content=readmore';
   $body = preg_replace($pattern, $replacement, $body);
 
