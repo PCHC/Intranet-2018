@@ -18,7 +18,7 @@ add_action( 'send_email_digest', function ($args = null) {
     ),
   );
 
-  $to = 'AllEmployees@pchc.com';
+  $to = 'cviolette@pchc.com';
   $subject = 'Latest PCHC Employee News - ' . date('F j, Y');
   $body = "<p>To keep you well-informed, PCHC's Employee Intranet emails a weekly review of the news articles posted recently.";
   $body .= "<p><em>Here's what you may have missed this week:</em></p>";
@@ -41,7 +41,7 @@ add_action( 'send_email_digest', function ($args = null) {
         if( has_post_thumbnail() ) {
           $body .= '<td style="vertical-align: top;">';
             $body .= '<a href="'.get_the_permalink().'?utm_source=latest-news&utm_medium=email&utm_content=thumbnail">';
-              $body .= '<img src="'.get_site_url().'/'.get_the_post_thumbnail_url(get_the_ID(), 'thumbnail').'" style="margin-right: 12px; width: 100px;" alt="'.get_the_title().'"/>';
+              $body .= '<img src="'.get_site_url().get_the_post_thumbnail_url(get_the_ID(), 'thumbnail').'" style="margin-right: 12px; width: 100px;" alt="'.get_the_title().'"/>';
             $body .= '</a>';
           $body .= '</td>';
         }
@@ -54,7 +54,7 @@ add_action( 'send_email_digest', function ($args = null) {
             $i = 0;
             $len = count(get_the_category());
             foreach( get_the_category() as $category ) {
-              $body .= '<a href="'.get_category_link($category->term_id).'?utm_source=latest-news&utm_medium=email&utm_content=category">';
+              $body .= '<a href="'.get_site_url().get_category_link($category->term_id).'?utm_source=latest-news&utm_medium=email&utm_content=category">';
                 $body .= $category->name;
               $body .= '</a>';
 
@@ -76,7 +76,12 @@ add_action( 'send_email_digest', function ($args = null) {
     $body .= '<p><em>No new articles posted in the past week.</em></p>';
   }
 
-  $body .= '<hr/><p><strong>Stay up to date by visiting the <a href="' . get_home_url() . '?utm_source=latest-news&utm_medium=email&utm_content=bottomlink">PCHC Employee Intranet</a>.</strong></p>';
+  $body .= '<hr/><p><strong>Stay up to date by visiting the <a href="' . get_home_url() . '/?utm_source=latest-news&utm_medium=email&utm_content=bottomlink">PCHC Employee Intranet</a>.</strong></p>';
+
+  $pattern = '/(?<=readmore"\shref=")(https?:\/\/intranet\/[a-zA-Z0-9\/\-\_\.\=\;]*)/gm';
+  $replacement = '$1?utm_source=latest-news&utm_medium=email&utm_content=continued';
+  $body = preg_replace($pattern, $replacement, $body);
+
   wp_mail($to, $subject, $body, $headers);
 
   wp_reset_postdata();
