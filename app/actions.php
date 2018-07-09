@@ -20,12 +20,9 @@ add_action( 'send_email_digest', function ($args = null) {
 
   $to = 'AllEmployees@pchc.com';
   $subject = 'Latest PCHC Employee News - ' . date('F j, Y');
-  $body = "<p>To keep you well-informed, PCHC's Employee Intranet has a new feature to email you a review of the news articles posted recently.</p>";
-  // $ body = "<p>To keep you well-informed, PCHC's Employee Intranet emails a weekly review of the news articles posted recently.";
-  $body .= "<p>This first edition will feature articles posted in the last 2 weeks. Future editions will come out on Fridays and feature articles posted during the past week.</p>";
-  $body .= "<p><em>Here's what you may have missed:</em></p>";
+  $body = "<p>To keep you well-informed, PCHC's Employee Intranet emails a weekly review of the news articles posted recently.";
+  $body .= "<p><em>Here's what you may have missed this week:</em></p>";
   $body .= "<hr/>";
-  // $body .= "<p><em>Here's what you may have missed this week:</em></p>";
   $headers = array(
     'Content-Type: text/html; charset=UTF-8'
   );
@@ -75,9 +72,12 @@ add_action( 'send_email_digest', function ($args = null) {
 
     $body .= '</table>';
 
-    $body .= '<hr/><p><strong>Stay up to date by visiting the <a href="' . get_home_url() . '?utm_source=latest-news&utm_medium=email&utm_content=bottomlink">PCHC Employee Intranet</a>.</strong></p>';
-    wp_mail($to, $subject, $body, $headers);
+  } else {
+    $body .= '<p><em>No new articles posted in the past week.</em></p>';
   }
+
+  $body .= '<hr/><p><strong>Stay up to date by visiting the <a href="' . get_home_url() . '?utm_source=latest-news&utm_medium=email&utm_content=bottomlink">PCHC Employee Intranet</a>.</strong></p>';
+  wp_mail($to, $subject, $body, $headers);
 
   wp_reset_postdata();
 } );
