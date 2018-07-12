@@ -13,7 +13,7 @@ add_action( 'send_email_digest', function ($args = null) {
     'order' => 'DESC',
     'date_query' => array(
       array(
-        'after' => '2 weeks ago'
+        'after' => '1 week ago'
       ),
     ),
   );
