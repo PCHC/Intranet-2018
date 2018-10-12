@@ -11,6 +11,7 @@ add_action( 'send_email_digest', function ($args = null) {
     'post_status' => 'publish',
     'orderby' => 'date',
     'order' => 'DESC',
+    'tag__not_in' => array(156),
     'date_query' => array(
       array(
         'after' => '1 week ago'
